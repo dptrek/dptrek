@@ -1,0 +1,73 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+
+    /* 设置背景图像的路径 */
+    /*background-image: url(backgroud.png);*/
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+    /* 设置背景图像的位置，这里是居中 */
+    background-position: center;
+    /* 设置背景图像的大小，这里是cover，使其覆盖整个屏幕 */
+    background-size: cover;
+    /* 使背景图像固定不随页面滚动而移动 */
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 100px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.checkbox-container {
+    margin-bottom: 20px;
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+.note {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #666;
+}
