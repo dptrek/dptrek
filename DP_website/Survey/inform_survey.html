@@ -178,12 +178,17 @@
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1022.0.min.js"></script>
 <script src="../Backstage/jsonupload.js"></script>
 <script>
-// 定义 AWS S3 存储桶的信息
-const AWS_S3_REGION = 'ap-southeast-1';
-const AWS_S3_ACCESS_KEY_ID = 'AKIA2UC3ADDLJ3JDXA5O';
-const AWS_S3_SECRET_ACCESS_KEY = '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';
-const AWS_S3_BUCKET_NAME = 'dpjsonstore';
+// // 定义 AWS S3 存储桶的信息
+// const AWS_S3_REGION = 'ap-southeast-1';
+// const AWS_S3_ACCESS_KEY_ID = 'AKIA2UC3ADDLJ3JDXA5O';
+// const AWS_S3_SECRET_ACCESS_KEY = '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';
+// const AWS_S3_BUCKET_NAME = 'dpjsonstore';
+
     
+const AWS_S3_REGION = '1';
+const AWS_S3_ACCESS_KEY_ID = '1';
+const AWS_S3_SECRET_ACCESS_KEY = '1';
+const AWS_S3_BUCKET_NAME = '1';   
 const submitBtn = document.getElementById("submitjson");
 submitBtn.addEventListener('click', function(){
     uploadJSONToS3();
