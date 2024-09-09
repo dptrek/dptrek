@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notification</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../setting/process_display.css">
+<link rel="stylesheet" href="../../Consequence/dock/dock.css">
+
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_experience.png" alt="Your Image">
+    </div>
+
+    <div class="dock" id="dock_left">
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../../Consequence/dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../../Consequence/dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+
+<div id="reportModal" class="modal">
+  <div id="modal-content" class="modal-content">
+    <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+    <h2>Report problems of the website</h2>
+    <p>Please specify details about your report in the text box below:</p>
+    <textarea id="reportReason" rows="6" cols="50"></textarea>
+    <button onclick="submitReport()">Submit</button>
+  </div>
+</div>
+
+
+
+  <div class="container" style="margin-top: 120px;">
+    <p></p>
+
+    <div class="tooltip-container_noti" id="tooltip-confer" onclick="scoreiadd()">
+      <div class="tooltip-confer-image">
+      <img src="../../setting/bell.gif" alt="Tooltip Image">
+    </div>
+    <div class="tooltip-confer-content">
+        <span class="close-button_noti" onclick="closenoti()" onclick="scoreiadd()">&times;</span>       
+        <p>
+          <span style="display: block;"><strong>Flash Deal Alert!</strong></span>
+          Your Favorite Items Are Back in Stock! Grab Them Before They're Gone Again! Whether It's That Statement Dress You've Been Eyeing or the Must-Have Gadgets Everyone's Talking About, Seize the Moment and Add Them to Your Cart Now! Act Fast - These Deals Won't Last!
+        </p>
+    </div>
+    </div>
+
+    <div class="tooltip-container_noti" id="tooltip-confer-1" onclick="scoreiadd()">
+      <div class="tooltip-confer-image">
+      <img src="../../setting/bell.gif" alt="Tooltip Image">
+    </div>
+    <div class="tooltip-confer-content">
+        <span class="close-button_noti" onclick="closenoti_else('tooltip-confer-1')" onclick="scoreiadd()">&times;</span>
+        
+        <p>
+          <span style="display: block;"><strong>Don't Miss Out!</strong></span>
+          Get an Additional 20% Off Your Entire Purchase with Code 'SAVE20' - Limited Time Offer! From Fashion and Beauty Essentials to Home Decor and Electronics, We've Got Everything You Need at Prices You'll Love. Shop Now and Score Big Savings Today!
+        </p>
+    </div>
+    </div>
+
+    <div class="tooltip-container_noti" id="tooltip-confer-2" onclick="scoreiadd()">
+      <div class="tooltip-confer-image">
+      <img src="../../setting/bell.gif" alt="Tooltip Image">
+    </div>
+    <div class="tooltip-confer-content">
+        <span class="close-button_noti" onclick="closenoti_else('tooltip-confer-2')" onclick="scoreiadd()">&times;</span>
+        
+        <p>
+          <span style="display: block;"><strong>New Arrivals Alert!</strong></span>
+          Discover the Latest Trends and Must-Have Pieces You'll Love! Whether It's Statement Accessories, Cozy Knits, or Stylish Home Decor, We've Curated the Best Selection Just for You.
+        </p>
+    </div>
+    </div>
+<button id="continue_btn_next" onclick="continueBtn()">Next</button>
+
+  <script src="script.js"></script>
+  <script src="../../Backstage/insert_code_edu.js"></script>
+  <script>
+  // 提交报告
+  function submitReport() {
+    var reason = document.getElementById("reportReason").value;
+    saveComment(reason);
+    // 在这里可以添加提交报告的逻辑
+    console.log("Reason for report: ", reason);
+    closeModal(); // 提交后关闭模态框
+      recordAction(1, 'report');
+    continue_next();
+  }
+
+  function show_Page(){
+    alert("You may leave the website by clicking the 'Next' button!");
+      recordAction(1, 'back');
+    continue_next();
+  }
+    </script>
+    
+
+
+</body>
+</html>
+
+

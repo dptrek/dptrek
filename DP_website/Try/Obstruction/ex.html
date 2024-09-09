@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cookie Settings</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    .cookie-container {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 250px;
+      background-color: #333;
+      color: #fff;
+      padding: 15px;
+      box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+    }
+
+    .cookie-settings {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px; /* Add margin at the bottom */
+      padding: 10px;
+    }
+
+    .cookie-btn-container {
+      text-align: center;
+      margin-top: 5px; /* Reduce top margin */
+    }
+
+    .cookie-btn {
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #008CBA;
+    }
+
+    .confirm-btn {
+      position: absolute;
+      bottom: 0;
+      left: 100px;
+      background-color: #4caf50;
+      padding: 8px 15px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: none;
+    }
+
+    .allow-all-btn {
+      background-color: #008CBA; /* Blue */
+    }
+  </style>
+<link rel="stylesheet" href="../../setting/process_display.css">
+<link rel="stylesheet" href="../../Consequence/dock/dock.css">
+</head>
+<body>
+
+  <div class="floating-bar">
+    <img src="../../setting/pro_experience.png" alt="Your Image">
+</div>
+
+    <div class="dock" id="dock_left">
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../../Consequence/dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../../Consequence/dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+<!-- 文本框 -->
+<div id="reportModal" class="modal">
+  <div id="modal-content" class="modal-content">
+    <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+    <h2>Report problems of the website</h2>
+    <p>Please specify details about your report in the text box below:</p>
+    <textarea id="reportReason" rows="6" cols="50"></textarea>
+    <button onclick="submitReport()">Submit</button>
+  </div>
+</div>
+<button id="continue_btn_next" onclick="continueBtn()">Next</button>
+<div class="cookie-container" id="cookieContainer" style="margin-left: 100px;">
+  <h2>Website Cookies Setting</h2>
+  <p>Our websites place cookies on your device to give you the best user experience. 
+    By using our websites, you agree to the placement of these cookies. <div></div>To learn more, read our Privacy Policy.</p>
+  <div class="cookie-settings" style="display: none;">
+    <div><input type="checkbox" id="analyticsCheckbox" checked onchange="toggleConfirmButton()"> Analytics Cookies</div>
+    <div><input type="checkbox" id="personalizationCheckbox" checked onchange="toggleConfirmButton()"> Personalization Cookies</div>
+    <div><input type="checkbox" id="advertisingCheckbox" checked onchange="toggleConfirmButton()"> Advertising Cookies</div>
+  </div>
+
+  <div class="cookie-btn-container">
+    <button class="cookie-btn confirm-btn" onclick="confirmChoices()">Confirm my choices</button>
+    <button class="cookie-btn allow-all-btn" onclick="allowAll()">Allow all</button>
+    <button class="cookie-btn" onclick="showCookieSettings()">Reject</button>
+  </div>
+</div>
+
+<div class="tooltip-container_noti" id="tooltip-confer" onclick="continue_next()">
+  <div class="tooltip-confer-image">
+  <img src="../../setting/bell.gif" alt="Tooltip Image">
+</div>
+<div class="tooltip-confer-content">
+    <span class="close-button_noti" onclick="closenoti_else('tooltip-confer')">&times;</span>
+    <p>
+      <span style="display: block;"><strong>Do you want to know?</strong></span>
+      We've detected that you're in Florida! 🌴 Ready to explore? Click here for our exclusive travel recommendations and make the most out of your sunny days! 🌞✈️ #FloridaAdventures
+    </p>
+</div>
+</div>
+
+<script src="script.js"></script>
+<script src="../../Backstage/insert_code_edu.js"></script>
+<script>
+  // 提交报告
+  function submitReport() {
+    var reason = document.getElementById("reportReason").value;
+    saveComment(reason);
+    // 在这里可以添加提交报告的逻辑
+    console.log("Reason for report: ", reason);
+    closeModal(); // 提交后关闭模态框
+    recordAction(1, 'report');
+    continue_next();
+  }
+
+  function show_Page(){
+    alert("You may leave the website by clicking the 'Next' button!");
+    recordAction(1, 'back');
+    continue_next();
+  }
+</script>
+    
+
+</body>
+</html>

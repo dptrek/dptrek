@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personalized Advertisement Settings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../../setting/process_display.css">
+    <link rel="stylesheet" href="../../Consequence/dock/dock.css">
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_experience.png" alt="Your Image">
+    </div>
+    
+    <div class="dock" id="dock_left">
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../../Consequence/dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../../Consequence/dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+    <div id="reportModal" class="modal">
+      <div id="modal-content" class="modal-content">
+        <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+        <h2>Report problems of the website</h2>
+        <p>Please specify details about your report in the text box below:</p>
+        <textarea id="reportReason" rows="6" cols="50"></textarea>
+        <button onclick="submitReport()">Submit</button>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top: 120px;">
+        <div class="personal-ad-settings">
+            <h3>Personalized Advertisement Settings</h3>
+            <p>We will offer you ads you like.</p>
+            <label><input type="checkbox" class="personal-ad-checkbox" checked> Enable Personalized Ads</label><br>
+            <button class="confirm-ad-btn">Confirm</button>
+        </div>
+    </div>
+<button id="continue_btn_next" onclick="continueBtn()">Next</button>
+    <div class="tooltip-container_noti" id="tooltip-confer">
+      <div class="tooltip-confer-image">
+      <img src="../../setting/bell.gif" alt="Tooltip Image">
+    </div>
+    <div class="tooltip-confer-content">
+        <span class="close-button_noti" onclick="closenoti_else('tooltip-confer'); continue_next()">&times;</span>
+        <p>
+          <span style="display: block;"><strong>Do you want to know?</strong></span>
+          We've detected that you're in Florida! 🌴 Ready to explore? Click here for our exclusive travel recommendations and make the most out of your sunny days! 🌞✈️ #FloridaAdventures
+        </p>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+  <script>
+  // 提交报告
+  function submitReport() {
+    var reason = document.getElementById("reportReason").value;
+    saveComment(reason);
+    // 在这里可以添加提交报告的逻辑
+    console.log("Reason for report: ", reason);
+    closeModal(); // 提交后关闭模态框
+    continue_next();
+    recordAction(1, 'report');
+  }
+
+  function show_Page(){
+      alert("You may leave the website by clicking the 'Next' button!");
+      continue_next();
+      recordAction(1, 'back');
+  }
+    </script>
+</body>
+</html>
+

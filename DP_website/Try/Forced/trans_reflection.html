@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey</title>
+<link rel="stylesheet" href="../../setting/process_display.css">
+<style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 600px;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .btn {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+    .btn-back {
+        background-color: #4CAF50;
+    }
+</style>
+</head>
+<body>
+
+    <div class="floating-bar">
+        <img src="../../setting/pro_reflection.png" alt="Your Image">
+    </div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <p>What observations do you have from the previous example?</p>
+        <input type="checkbox" name="observations" value="observations_1">I was forced to subscribe to SMS updates in order to register.<br>
+        <input type="checkbox" name="observations" value="observations_2">I didn't notice anything special.<br>
+        <input type="checkbox" name="observations" value="other">Other, please specify below:<br>
+        <textarea id="observations_content" rows="4" cols="50" placeholder="Enter your observations here."></textarea><br>
+        <button class="btn" onclick="if(checkCheckboxSelected('observations', 'observations_content')) openModal('modal2')">Next</button>
+    </div>
+</div>
+
+<div id="modal2" class="modal">
+    <div class="modal-content">
+        <p>The previous example requires users to subscribe to SMS updates before they can register an account. What's your feeling about it?</p>
+    <input type="radio" name="feelings" value="Concerned">
+    <label for="Concerned">Concerned</label><br>
+    
+<input type="radio" name="feelings" value="Annoyed">
+    <label for="Annoyed">Annoyed</label><br>
+    
+<input type="radio" name="feelings" value="indifference">
+    <label for="indifference">Indifference</label><br>
+    
+<input type="radio" name="feelings" value="Intrigued">
+    <label for="Intrigued">Intrigued</label><br>
+    
+<input type="radio" name="feelings" value="Cautious">
+    <label for="Cautious">Cautious</label><br>
+
+        
+        <input type="radio" name="feelings" value="other"> Other, please specify below:<br>
+        <textarea id="feelings_content" rows="4" cols="50"
+        placeholder="Enter your feelings here."></textarea><br>
+        <p>Please choose the degree of your feeling: 
+        <select id="feelings_degree">
+            <option value="" selected>Select an option</option>
+            <option value="1">1 (Slightly)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Extremely)</option>
+          </select></p>
+          <div></div>
+          <button class="btn" onclick="if(checkDegreeSelected() && checkradioSelected('feelings', 'feelings_content')) openModal('modal3')">Next</button>
+    </div>
+</div>
+
+
+<div id="modal3" class="modal">
+    <div class="modal-content">
+        <p>Have you encountered anything similar to the previous example in your daily life?</p>
+        <input type="radio" name="encounter" value="always"> Always<br>
+        <input type="radio" name="encounter" value="often"> Often<br>
+        <input type="radio" name="encounter" value="sometimes"> Sometimes<br>
+        <input type="radio" name="encounter" value="seldom"> Seldom<br>
+        <input type="radio" name="encounter" value="never"> Never<br>
+        <textarea id="similar-situations" rows="4" cols="50" 
+        placeholder="If you have encountered before, please provide details here:"></textarea><br>
+        <button class="btn" onclick="if(checkDegreeSelected() && checkradioSelected('encounter', 'similar-situations')) submitAnswers()">Submit</button>
+    </div>
+</div>
+
+<script>
+    // Open modal
+    function openModal(id) {
+        var modal_1 = document.getElementById('modal1');
+        var modal_2 = document.getElementById('modal2');
+        var modal_3 = document.getElementById('modal3');
+        modal_1.style.display = "none";
+        modal_2.style.display = "none";
+        modal_3.style.display = "none";
+        var modal = document.getElementById(id);
+        modal.style.display = "block";
+    }
+
+    // Submit answers
+    function submitAnswers() {
+        var feelings = document.querySelector('input[name="feelings"]:checked').value;
+        var feelings_content = document.getElementById('feelings_content').value;
+        var feelings_degree = document.getElementById('feelings_degree').value;
+        var observations = document.querySelector('input[name="observations"]:checked').value;
+        var observations_content = document.getElementById("observations_content").value;
+        var encounter = document.querySelector('input[name="encounter"]:checked').value;
+        var similarSituations = document.getElementById("similar-situations").value;
+
+        var reflectionNagging = {
+            feelings: feelings+"  Content: "+feelings_content + "  Degree: " + feelings_degree,
+            observations: observations+"  Content: " + observations_content,
+            encounter: encounter,
+            similarSituations: similarSituations
+        };
+
+        localStorage.setItem('reflection_forced', JSON.stringify(reflectionNagging));
+
+        // Redirect to next page
+        window.location.href = "../../Consequence/introduction/Forced.html";
+    }
+
+    window.onload = function() {
+        openModal('modal1');
+  };
+
+  function checkDegreeSelected() {
+    var degree = document.getElementById('feelings_degree').value;
+    if (degree === "") {
+        alert("Please select the degree of your feeling.");
+        return false; // 拒绝执行openModal函数
+    }
+    return true; // 允许执行openModal函数
+}
+
+function checkradioSelected(radioName, textboxid) {
+    var radios = document.getElementsByName(radioName);
+    var textbox = document.getElementById(textboxid).value;
+    for (var i = 0; i < radios.length; i++) {
+        var selectedValue = radios[i].value;
+        if(selectedValue === "other" &&  textbox === ''){
+            alert('please specify textbox');
+            return false;
+        }
+        if (radios[i].checked) {
+            return true; // 如果至少有一个选项被选中，则返回 true
+        }
+    }
+    alert('Please choose one choice.');
+    return false; // 如果没有选项被选中，则返回 false
+}
+function checkCheckboxSelected(checkboxName, textAreaId) {
+    var checkboxes = document.getElementsByName(checkboxName);
+    var textArea = document.getElementById(textAreaId);
+    var isChecked = false;
+    var isOtherChecked = false;
+
+    for (var i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            isChecked = true;
+            if (checkboxes[i].value === 'other') {
+                isOtherChecked = true;
+            }
+        }
+    }
+
+    if (isOtherChecked && textArea.value.trim() === "") {
+        alert("Please specify your observation in the text area.");
+        return false;
+    }
+
+    if (isChecked || textArea.value.trim() !== "") {
+        return true;
+    } else {
+        alert("Please select at least one observation or specify in the text area.");
+        return false;
+    }
+}
+
+</script>
+
+</body>
+</html>

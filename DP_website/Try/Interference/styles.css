@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+    /* 设置背景图像的路径 */
+      /*background-image: url(backgroud.png);*/
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+      /* 设置背景图像的位置，这里是居中 */
+      background-position: center;
+      /* 设置背景图像的大小，这里是cover，使其覆盖整个屏幕 */
+      background-size: cover;
+      background-repeat: no-repeat;
+      /* 使背景图像固定不随页面滚动而移动 */
+      background-attachment: fixed;
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    border: #c82333;
+}
+
+.personal-ad-settings {
+    margin-bottom: 20px;
+}
+
+.personal-ad-settings h3 {
+    margin-top: 0;
+}
+
+.disable-personal-ad-btn {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.disable-personal-ad-btn:hover {
+    background-color: #c82333;
+}
+
