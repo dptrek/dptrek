@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload JSON to S3</title>
+</head>
+<body>
+    <button onclick="uploadJSONToS3()">Upload JSON to S3</button>
+
+    <!-- 引入 AWS SDK for JavaScript -->
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1022.0.min.js"></script>
+    <script src="Backstage/jsonupload.js"></script>
+    <script>
+        // 定义 AWS S3 存储桶的信息
+        const AWS_S3_REGION = 'ap-southeast-1';
+        const AWS_S3_ACCESS_KEY_ID = 'AKIA2UC3ADDLJ3JDXA5O';
+        const AWS_S3_SECRET_ACCESS_KEY = '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';
+        const AWS_S3_BUCKET_NAME = 'dpjsonstore';
+    </script>
+</body>
+</html>

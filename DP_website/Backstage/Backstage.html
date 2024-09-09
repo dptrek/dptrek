@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>backstage</title>
+    <style>
+        .container {
+            margin-bottom: 20px; /* 设置不同部分之间的间距 */
+        }
+        #actionscontain, #staycontain {
+            min-height: 100px; /* 设置 action 和 stayTimes 区域的最小高度 */
+        }
+        #scorecontain {
+            background-color: lightgray; /* 设置 Score 区域的背景颜色 */
+            padding: 10px; /* 设置 Score 区域的内边距 */
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container" id="operation">
+        <button id="downloadBtn">下载</button>
+        <button id="renewBtn">清空</button>
+        <button id="getscoreBtn">分数</button>
+    </div>
+
+    <h2>Score</h2>
+    <div class="container" id="scorecontain"></div>
+    <h2>Actions</h2>
+    <div class="container" id="actionscontain"></div>
+    <h2>stayTimes</h2>
+    <div class="container" id="staycontain"></div>
+
+    <script src="insert_code_edu.js"></script>
+    <script src="Backstage.js"></script>
+
+</body>
+</html>

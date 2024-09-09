@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Education for Dark Patterns</title>
+    <style>
+        .icon-introduction img.intro_dock {
+            width: 50px; /* 设置图片宽度 */
+            height: 70px; /* 设置图片高度 */
+        }
+
+        .process_image{
+            width: 800px;
+            height: auto;
+        }
+        .checkmark_home {
+            font-size: 24px; /* 设置字体大小 */
+        }
+
+        #popup_submit {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-left: 60px;">
+        <h1>Education for Dark Patterns</h1>
+    </div>
+
+    <div style="margin-left: 60px;">
+        <div style="font-size: 24px;">Welcome to our dark pattern education website. Throughout this session, 
+            we will provide <span style="color: red;font-style: italic;">five educational modules</span>, 
+            and each module will allow you to <span style="color: red; font-style: italic;">experience, learn, and experiment</span> 
+            with one type of dark pattern. 
+            After completing all the modules, we will collect your feedback through a survey and a short interview. 
+        </div>
+        <img src="setting/pro_whole.png" alt="Process Image" class="process_image">
+        <div></div>
+        <strong style="font-size: 24px;">Please click below <u style="color: red;">modules</u> to start </strong>
+        <ul id="module-list" style="font-size: 24px;">
+            <li><a href="Try/Nagging/trans_experience.html">Nagging</a><span id="checkmark_nagging"></span></li>
+            <li><a href="Try/Obstruction/trans_experience.html">Obstruction</a><span id="checkmark_obstruction"></span></li>
+            <li><a href="Try/Sneaking/trans_experience.html">Sneaking</a><span id="checkmark_sneaking"></span></li>
+            <li><a href="Try/Interference/trans_experience.html">Interface Interference</a><span id="checkmark_interference"></span></li>
+            <li><a href="Try/Forced/trans_experience.html">Forced Action</a><span id="checkmark_forced"></span></li>
+        </ul>
+    </div>
+
+    <div id="popup_submit">
+        <h2>You have completed training！</h2>
+        <p>Please continue to our survey. </p>
+        <button id="submitjson">Next</button>
+    </div>
+
+    <script>
+        function randomizeListItems() {
+            var listItems = document.querySelectorAll("#module-list li");
+            var itemsArray = Array.from(listItems);
+            function shuffleArray(array) {
+                for (var i = array.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = array[i];
+                    array[i] = array[j];
+                    array[j] = temp;
+                }
+                return array;
+            }
+            var shuffledItems = shuffleArray(itemsArray);
+            var ulElement = document.querySelector("#module-list");
+            ulElement.innerHTML = "";
+            shuffledItems.forEach(function(item, index) {
+                var moduleNumber = index + 1;
+                var originalText = item.querySelector("a").textContent;
+                item.querySelector("a").textContent = "Module " + moduleNumber + ": " + originalText;
+                ulElement.appendChild(item);
+            });
+            localStorage.setItem("lastOrder", JSON.stringify(shuffledItems.map(function(item) {
+                return item.querySelector("a").textContent.split(": ")[1];
+            })));
+        }
+
+        function checkLocalStorageRecord(recordName, elementId) {
+            var recordValue = localStorage.getItem(recordName);
+            if (recordValue === "1") {
+                var checkmark = document.createElement("span");
+                checkmark.textContent = "✓";
+                checkmark.classList.add("checkmark_home");
+                document.getElementById(elementId).appendChild(checkmark);
+            }
+        }
+
+        window.onload = function() {
+            var lastOrder = localStorage.getItem("lastOrder");
+            var ulElement = document.querySelector("#module-list");
+            var itemsMap = {};
+            Array.from(ulElement.children).forEach(function(listItem) {
+                var linkText = listItem.querySelector("a").textContent.split(": ")[1] || listItem.querySelector("a").textContent;
+                itemsMap[linkText] = listItem;
+            });
+
+            
+
+            if (lastOrder) {
+                ulElement.innerHTML = ""; // 清空列表项
+                var itemsArray = JSON.parse(lastOrder);
+                itemsArray.forEach(function(textContent, index) {
+                    if (itemsMap[textContent]) {
+                        var moduleNumber = index + 1;
+                        var listItem = itemsMap[textContent];
+                        listItem.querySelector("a").textContent = "Module " + moduleNumber + ": " + textContent;
+                        ulElement.appendChild(listItem);
+                    }
+                });
+            } else {
+                randomizeListItems();
+            }
+
+            checkLocalStorageRecord("nagging_record", "checkmark_nagging");
+            checkLocalStorageRecord("obstruction_record", "checkmark_obstruction");
+            checkLocalStorageRecord("sneaking_record", "checkmark_sneaking");
+            checkLocalStorageRecord("interference_record", "checkmark_interference");
+            checkLocalStorageRecord("forced_record", "checkmark_forced");
+
+            var nagging_record = localStorage.getItem("nagging_record");
+            var sneaking_record = localStorage.getItem("sneaking_record");
+            var forced_record = localStorage.getItem("forced_record");
+            var obstruction_record = localStorage.getItem("obstruction_record");
+            var interference_record = localStorage.getItem("interference_record");
+
+            if (nagging_record === "1" && obstruction_record === "1" && sneaking_record === "1" && interference_record === "1" && forced_record === "1") {
+                document.getElementById("popup_submit").style.display = "block";
+            }
+
+            const submitBtn = document.getElementById("submitjson");
+            submitBtn.addEventListener('click', function() {
+                window.open("Survey/allsurvey.html", "_self");
+            });
+        };
+    </script>
+    <script src="Backstage/jsonupload.js"></script>
+
+</body>
+</html>
