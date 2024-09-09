@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options {
+            list-style-type: none;
+            padding: 0;
+        }
+        .options li {
+            margin: 10px 0;
+        }
+        .options input[type="radio"] {
+            margin-right: 10px;
+        }
+        .options label {
+            font-size: 16px;
+        }
+        .submit-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <strong style="font-size: 20px;">Thank you for completing the first part of the survey. Now let's do a short quiz! 
+        Try your best. If you don't know the answer, please select 'I don't know'. There are no consequences, but it will help us improve the training.</strong>
+    <div class="question">
+        <p>1. Following is an example of a dark pattern. Please select what will happen in this example.</p>
+    </div>
+    <div>
+        <img src="image/Nagging_test.png" alt="Test Image" style="width: 60%;">
+    </div>
+    <form>
+        <ul class="options">
+            <li>
+                <input type="radio" name="outcome-1" value="A" id="option1">
+                <label>A. If I click 'Not Now', the notification will pop up again and again</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-1" value="B" id="option2">
+                <label>B. If I choose 'OK', I will receive tons of messages </label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-1" value="C" id="option3">
+                <label>C. Both of A and B</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-1" value="D" id="option4">
+                <label>D. Neither of A or B </label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-1" value="E" id="option5">
+                <label>E. I don't know</label>
+            </li>
+        </ul>
+    </form>
+    <div>To which kind of dark pattern does this example belong?</div>
+    <ul class="options">
+        <li>
+            <input type="radio" name="outcome-2" value="A" id="option1">
+            <label>A. Forced Action</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-2" value="B" id="option2">
+            <label>B. Obstruction </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-2" value="C" id="option3">
+            <label>C. Interface Interference</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-2" value="D" id="option4">
+            <label>D. Sneaking </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-2" value="E" id="option5">
+            <label>E. Nagging </label>
+        </li>
+            <li>
+                <input type="radio" name="outcome-2" value="F" id="option6">
+                <label>F. I don't know</label>
+            </li>
+    </ul>
+
+    <div class="question">
+        <p>2. Following is an example of a dark pattern. Please select what will happen in this example.</p>
+    </div>
+    <div>
+        <img src="image/Sneaking_test.png" alt="Test Image" style="width: 100%;">
+    </div>
+    <form>
+        <ul class="options">
+            <li>
+                <input type="radio" name="outcome-3" value="A" id="option1">
+                <label>A. If I click 'Continue', I will not receive mail and email about exclusive offers</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-3" value="B" id="option2">
+                <label>B. If I click 'Continue', I will receive mail and email about exclusive offers</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-3" value="C" id="option3">
+                <label>C. Clicking 'More info' won't tell me that I will receive mail and emails after paying</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-3" value="D" id="option4">
+                <label>D. All of above</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-3" value="E" id="option5">
+                <label>E. I don't know</label>
+            </li>
+        </ul>
+    </form>
+    <div>To which kind of dark pattern does this example belong?</div>
+    <ul class="options">
+        <li>
+            <input type="radio" name="outcome-4" value="A" id="option1">
+            <label>A. Forced Action</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-4" value="B" id="option2">
+            <label>B. Obstruction </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-4" value="C" id="option3">
+            <label>C. Interface Interference</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-4" value="D" id="option4">
+            <label>D. Sneaking </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-4" value="E" id="option5">
+            <label>E. Nagging </label>
+        </li>
+                <li>
+                <input type="radio" name="outcome-4" value="F" id="option6">
+                <label>F. I don't know</label>
+            </li>
+    </ul>
+
+    <div class="question">
+        <p>3. Following is an example of a dark pattern. Please select what will happen in this example.</p>
+    </div>
+    <div>
+        <img src="image/Forced_test.png" alt="Test Image" style="width: 100%;">
+    </div>
+    <form>
+        <ul class="options">
+            <li>
+                <input type="radio" name="outcome-5" value="A" id="option1">
+                <label>A. I can continue browsing if I don't click 'Yes, I accept'</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-5" value="B" id="option2">
+                <label>B. If I click 'Yes, I accept', I will leave the website</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-5" value="C" id="option3">
+                <label>C. If I click 'Yes, I accept', I might see personalized ads on the websites</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-5" value="D" id="option4">
+                <label>D. If I click 'Yes, I accept', my browsing data won’t be collected</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-5" value="E" id="option5">
+                <label>E. I don't know</label>
+            </li>
+        </ul>
+    </form>
+    <div>To which kind of dark pattern does this example belong?</div>
+    <ul class="options">
+        <li>
+            <input type="radio" name="outcome-6" value="A" id="option1">
+            <label>A. Forced Action</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-6" value="B" id="option2">
+            <label>B. Obstruction </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-6" value="C" id="option3">
+            <label>C. Interface Interference</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-6" value="D" id="option4">
+            <label>D. Sneaking </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-6" value="E" id="option5">
+            <label>E. Nagging </label>
+        </li>
+        <li>
+                <input type="radio" name="outcome-6" value="F" id="option6">
+                <label>F. I don't know</label>
+            </li>
+    </ul>
+
+    <div class="question">
+        <p>4. The following is an example of a dark pattern. Imagine that you want to stop the applications on your phone from pushing personalized ads to you, and you go to the settings to find the configuration that can stop personalized ads. Please select what will happen in this example.</p>
+    </div>
+    <div>
+        <img src="image/Obstruction_test.png" alt="Test Image" style="width: 100%;">
+    </div>
+    <form>
+        <ul class="options">
+            <li>
+                <input type="radio" name="outcome-7" value="A" id="option1">
+                <label>A. If I want to stop personalized ads, I need to go through at least four pages in the app.</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-7" value="B" id="option2">
+                <label>B. I can stop personal ads in only one page</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-7" value="C" id="option3">
+                <label>C. In the 'General‘ settings, I can not find the way to stop personalized ads</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-7" value="D" id="option4">
+                <label>D. I cannot stop personal ads</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-7" value="E" id="option5">
+                <label>E. I don't know</label>
+            </li>
+        </ul>
+    </form>
+    <div>To which kind of dark pattern does this example belong?</div>
+    <ul class="options">
+        <li>
+            <input type="radio" name="outcome-8" value="A" id="option1">
+            <label>A. Forced Action</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-8" value="B" id="option2">
+            <label>B. Obstruction </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-8" value="C" id="option3">
+            <label>C. Interface Interference</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-8" value="D" id="option4">
+            <label>D. Sneaking </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-8" value="E" id="option5">
+            <label>E. Nagging </label>
+        </li>
+                <li>
+                <input type="radio" name="outcome-8" value="F" id="option6">
+                <label>F. I don't know</label>
+            </li>
+    </ul>
+
+    <div class="question">
+        <p>5. The following is an example of a dark pattern. Imagine that you are browsing the website of a company called Linkis, and a dialog box pops up. Please select what will happen in this example.</p>
+    </div>
+    <div>
+        <img src="image/Interference_test.png" alt="Test Image" style="width: 100%;">
+    </div>
+    <form>
+        <ul class="options">
+            <li>
+                <input type="radio" name="outcome-9" value="A" id="option1">
+                <label>A. If I click 'Connect Twitter Account', @Linkis_com promotion ads will appear in my twitter account</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-9" value="B" id="option2">
+                <label>B. If I click 'Connect Twitter Account', @Linkis_com promotion ads will not appear in my twitter account</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-9" value="C" id="option3">
+                <label>C. I will receive news and tips if I uncheck the 'Follow @Linkis_com for news and tips'</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-9" value="D" id="option4">
+                <label>D. None of above</label>
+            </li>
+            <li>
+                <input type="radio" name="outcome-9" value="E" id="option5">
+                <label>E. I don't know</label>
+            </li>
+        </ul>
+    </form>
+    <div>To which kind of dark pattern does this example belong?</div>
+    <ul class="options">
+        <li>
+            <input type="radio" name="outcome-10" value="A" id="option1">
+            <label>A. Forced Action</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-10" value="B" id="option2">
+            <label>B. Obstruction </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-10" value="C" id="option3">
+            <label>C. Interface Interference</label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-10" value="D" id="option4">
+            <label>D. Sneaking </label>
+        </li>
+        <li>
+            <input type="radio" name="outcome-10" value="E" id="option5">
+            <label>E. Nagging </label>
+        </li>
+            <li>
+                <input type="radio" name="outcome-10" value="F" id="option6">
+                <label>F. I don't know</label>
+            </li>
+    </ul>
+    <button type="button" class="submit-button" onclick="submitForm()">Submit</button>
+</div>
+
+<script>
+    function submitForm() {
+        const selectedOption_1 = document.querySelector('input[name="outcome-1"]:checked');
+        const selectedOption_2 = document.querySelector('input[name="outcome-2"]:checked');
+        const selectedOption_3 = document.querySelector('input[name="outcome-3"]:checked');
+        const selectedOption_4 = document.querySelector('input[name="outcome-4"]:checked');
+        const selectedOption_5 = document.querySelector('input[name="outcome-5"]:checked');
+        const selectedOption_6 = document.querySelector('input[name="outcome-6"]:checked');
+        const selectedOption_7 = document.querySelector('input[name="outcome-7"]:checked');
+        const selectedOption_8 = document.querySelector('input[name="outcome-8"]:checked');
+        const selectedOption_9 = document.querySelector('input[name="outcome-9"]:checked');
+        const selectedOption_10 = document.querySelector('input[name="outcome-10"]:checked');
+
+        if(selectedOption_1 && selectedOption_2 && selectedOption_3 && selectedOption_4 && selectedOption_5 && selectedOption_6 && selectedOption_7 && selectedOption_8 && selectedOption_9 && selectedOption_10){
+            const choice1 = selectedOption_1.value;
+            const choice2 = selectedOption_2.value;
+            const choice3 = selectedOption_3.value;
+            const choice4 = selectedOption_4.value;
+            const choice5 = selectedOption_5.value;
+            const choice6 = selectedOption_6.value;
+            const choice7 = selectedOption_7.value;
+            const choice8 = selectedOption_8.value;
+            const choice9 = selectedOption_9.value;
+            const choice10 = selectedOption_10.value;
+
+
+            const choice = [choice1, choice2, choice3, choice4, choice5, choice6, choice7, choice8, choice9, choice10]; 
+            localStorage.setItem('test_ch', choice);
+            console.log('1');
+            window.open("inform_survey.html","_self");
+        }else{
+            alert('Please answer all questions!');
+        }
+    }
+</script>
+
+</body>
+</html>

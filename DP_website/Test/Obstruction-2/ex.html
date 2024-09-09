@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscription Cancellation</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../Consequence/dock/dock.css">
+<link rel="stylesheet" href="../../setting/process_display.css">
+</head>
+<body>
+  <div class="floating-bar">
+    <img src="../../setting/pro_test.png" alt="Your Image">
+</div>
+
+<div class="container" style="margin-top: 150px;">
+    <h1>Cancel Subscription</h1>
+    <p><strong>Note: </strong> You may want to cancel subscription</p>
+    <button id="changeBtn">Upgrade Subscription</button>
+    <p>Or</p>
+    <button id="manageBtn">Manage other settings</button>
+    <span style="margin-right: 30px;"></span> <!-- 添加间距 -->
+    <button id="accountBtn">Go to your account</button>
+</div>
+
+<div id="subscriptionpopup" class="popupother">
+  <div class="popup-content-other">
+    <span class="closeother" id="closeSubPopupBtn">&times;</span>
+    <h2>Upgrade Subscription</h2>
+    <ul>
+      <li><a href="../../Try/Obstruction/trans_test_2.html">$20/month - Basic Subscription</a></li>
+      <li><a href="../../Try/Obstruction/trans_test_2.html">$100/month - Premium Subscription</a></li>
+      <li><a href="../../Try/Obstruction/trans_test_2.html">$200/month - Business Subscription</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="settingsPopup" class="popupother">
+  <div class="popup-content-other">
+    <span class="closeother" id="closeSettingsPopupBtn">&times;</span>
+    <h2>Manage Other Settings</h2>
+    <ul>
+      <li><a href="">Privacy Settings</a></li>
+      <li><a href="">Update User Information</a></li>
+    </ul>
+  </div>
+</div>
+
+<div id="cancelpopup" class="popupother">
+  <div class="popup-content-other">
+      <span class="closeother" id="close-sub">&times;</span>
+      <h2>Would you like to cancel Subscription?</h2>
+      <button id="cancelsure">Cancel Subscription</button>
+      <span style="margin-right: 30px;"></span> <!-- 添加间距 -->
+      <button id="cancelno">No</button>
+  </div>
+</div>
+
+ <!--右侧 dock -->
+<div class="dock" id="dock_left">
+    <!-- 图标1 -->
+    <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../../Consequence/dock/icon-back.png)" id="icon-back">
+      <span class="tooltip-text">Leave the website</span>
+    </div>
+    <!-- Report -->>
+    <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../../Consequence/dock/icon-report.png)" id="reporticon"> 
+      <span class="tooltip-text">Report the website</span> 
+    </div>
+  </div>
+  
+
+<!-- 文本框 -->
+<div id="reportModal" class="modal">
+  <div id="modal-content" class="modal-content">
+    <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+    <h2>Report problems of the website</h2>
+    <p>Please specify details about your report in the text box below:</p>
+    <textarea id="reportReason" rows="6" cols="50"></textarea>
+    <button onclick="submitReport()" style="color:gray;">Submit</button>
+  </div>
+</div>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+    <script src="script.js"></script>
+    <script>
+      // 提交报告
+    function submitReport() {
+      var reason = document.getElementById("reportReason").value;
+      saveComment(reason);
+      recordAction(1,"report");
+      // 在这里可以添加提交报告的逻辑
+      console.log("Reason for report: ", reason);
+      closeModal(); // 提交后关闭模态框
+      code_score_control(1);
+      window.open("../../Try/Obstruction/trans_test_2.html","_self");
+    }
+  
+  
+    function show_Page(){
+      recordAction(1,"back");
+      code_score_control(2);
+      window.open("../../Try/Obstruction/trans_test_2.html", "_self");
+  }
+  </script>
+
+</body>
+</html>
+

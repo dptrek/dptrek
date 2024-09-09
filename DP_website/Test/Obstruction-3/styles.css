@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+
+
+        /* 设置背景图像的路径 */
+        /*background-image: url(backgroud.png);*/
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+        /* 设置背景图像的位置，这里是居中 */
+        background-position: center;
+        /* 设置背景图像的大小，这里是cover，使其覆盖整个屏幕 */
+        background-size: cover;
+        /* 使背景图像固定不随页面滚动而移动 */
+        background-attachment: fixed;
+      
+}
+
+.container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu {
+    border-right: 1px solid #ccc;
+    padding-right: 20px;
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.content {
+    padding-left: 20px;
+}
+
+.content h2 {
+    margin-top: 0;
+}
+
+.content p {
+    margin-bottom: 10px;
+}
+
+#tips_edu{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: white;
+}

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey</title>
+    <style>
+        .question-section {
+            margin-bottom: 20px;
+        }
+        .statement {
+            margin-bottom: 10px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+            width: 800px;
+            margin-bottom: 20px;
+        }
+.button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        
+    </style>
+
+</head>
+<body>
+    <h2>You have completed the dark pattern education. 
+        Now, we would like to ask for your opinion on the education through a short survey. Please indicate your agreement or disagreement with each statement. 
+        Thank you for your participation so far.
+    </h2>
+    <form id="surveyForm" style="margin-left: 50px;">
+        <div class="question-section">
+            <h3>Enjoyment</h3>
+            <div class="statement">
+                <label>I had fun in the training.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question0" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question0" value="2"></label>
+                    <label>Neutral <input type="radio" name="question0" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question0" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question0" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I found the training enjoyable.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question1" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question1" value="2"></label>
+                    <label>Neutral <input type="radio" name="question1" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question1" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question1" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>The actual process of the training was pleasant.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question2" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question2" value="2"></label>
+                    <label>Neutral <input type="radio" name="question2" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question2" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question2" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>The training experience was pleasurable.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question3" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question3" value="2"></label>
+                    <label>Neutral <input type="radio" name="question3" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question3" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question3" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Curiosity</h3>
+            <div class="statement">
+                <label>This training experience piqued my interest in dark patterns.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question4" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question4" value="2"></label>
+                    <label>Neutral <input type="radio" name="question4" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question4" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question4" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>This training experience made me curious to learn more about dark patterns.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question5" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question5" value="2"></label>
+                    <label>Neutral <input type="radio" name="question5" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question5" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question5" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>This training experience motivated me to learn more about dark patterns.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question6" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question6" value="2"></label>
+                    <label>Neutral <input type="radio" name="question6" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question6" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question6" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Confidence</h3>
+            <div class="statement">
+                <label>I am confident of my ability to make sense of the dark pattern modules in the training materials.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question7" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question7" value="2"></label>
+                    <label>Neutral <input type="radio" name="question7" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question7" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question7" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I am confident that I can identify different types of dark patterns in real life.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question8" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question8" value="2"></label>
+                    <label>Neutral <input type="radio" name="question8" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question8" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question8" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I believe that I can deal with dark patterns if I see them in the future.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question9" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question9" value="2"></label>
+                    <label>Neutral <input type="radio" name="question9" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question9" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question9" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Focused Attention</h3>
+            <div class="statement">
+                <label>I lost myself in this training.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question10" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question10" value="2"></label>
+                    <label>Neutral <input type="radio" name="question10" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question10" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question10" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>The time I spent taking the training just slipped away.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question11" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question11" value="2"></label>
+                    <label>Neutral <input type="radio" name="question11" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question11" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question11" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I was absorbed in this training.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question12" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question12" value="2"></label>
+                    <label>Neutral <input type="radio" name="question12" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question12" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question12" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Perceived Ease Of Use</h3>
+            <div class="statement">
+                <label>I felt frustrated while taking this training.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question13" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question13" value="2"></label>
+                    <label>Neutral <input type="radio" name="question13" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question13" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question13" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I found this training confusing to learn.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question14" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question14" value="2"></label>
+                    <label>Neutral <input type="radio" name="question14" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question14" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question14" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>Using this training was taxing.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question15" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question15" value="2"></label>
+                    <label>Neutral <input type="radio" name="question15" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question15" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question15" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Aesthetic Appeal</h3>
+            <div class="statement">
+                <label>This training was attractive.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question16" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question16" value="2"></label>
+                    <label>Neutral <input type="radio" name="question16" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question16" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question16" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>This training was aesthetically appealing.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question17" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question17" value="2"></label>
+                    <label>Neutral <input type="radio" name="question17" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question17" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question17" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>This training appealed to my senses.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question18" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question18" value="2"></label>
+                    <label>Neutral <input type="radio" name="question18" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question18" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question18" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Reward</h3>
+            <div class="statement">
+                <label>Taking this training was worthwhile.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question19" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question19" value="2"></label>
+                    <label>Neutral <input type="radio" name="question19" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question19" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question19" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>My experience with this training was rewarding.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question20" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question20" value="2"></label>
+                    <label>Neutral <input type="radio" name="question20" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question20" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question20" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I felt interested in this training experience.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question21" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question21" value="2"></label>
+                    <label>Neutral <input type="radio" name="question21" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question21" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question21" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Attitude of coping with Dark Pattern</h3>
+            <div class="statement">
+                <label>Coping with Dark Pattern is unnecessary.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question22" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question22" value="2"></label>
+                    <label>Neutral <input type="radio" name="question22" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question22" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question22" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>Coping with Dark Pattern is wise.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question23" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question23" value="2"></label>
+                    <label>Neutral <input type="radio" name="question23" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question23" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question23" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>Coping with Dark Pattern is useful.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question24" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question24" value="2"></label>
+                    <label>Neutral <input type="radio" name="question24" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question24" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question24" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>Coping with Dark Pattern is not helpful.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question33" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question33" value="2"></label>
+                    <label>Neutral <input type="radio" name="question33" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question33" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question33" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>Coping with Dark Pattern is rewarding.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question34" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question34" value="2"></label>
+                    <label>Neutral <input type="radio" name="question34" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question34" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question34" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Risk of Dark Pattern</h3>
+            <div class="statement">
+                <label>In general, it would be risky to fall into dark patterns.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question25" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question25" value="2"></label>
+                    <label>Neutral <input type="radio" name="question25" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question25" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question25" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>There would be high potential for loss if I fall into dark patterns.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question26" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question26" value="2"></label>
+                    <label>Neutral <input type="radio" name="question26" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question26" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question26" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>There would be too much uncertainty associated with falling into dark patterns.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question27" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question27" value="2"></label>
+                    <label>Neutral <input type="radio" name="question27" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question27" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question27" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>Dark patterns would create many unexpected problems.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question28" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question28" value="2"></label>
+                    <label>Neutral <input type="radio" name="question28" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question28" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question28" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Future Behavioral Intention</h3>
+            <div class="statement">
+                <label>I plan to take the training if such training is available in future.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question29" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question29" value="2"></label>
+                    <label>Neutral <input type="radio" name="question29" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question29" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question29" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I intend to continue to take the training if such training is available in future.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question30" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question30" value="2"></label>
+                    <label>Neutral <input type="radio" name="question30" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question30" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question30" value="5"></label>
+                </div>
+            </div>
+            <div class="statement">
+                <label>I expect the training to continue if such training is available in future.</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question31" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question31" value="2"></label>
+                    <label>Neutral <input type="radio" name="question31" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question31" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question31" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <div class="question-section">
+            <h3>Recommendation</h3>
+            <div class="statement">
+                <label>How likely are you to recommend this training to your friends if such training is available in future?</label>
+                <div class="options">
+                    <label>Strongly disagree <input type="radio" name="question32" value="1"></label>
+                    <label>Somewhat disagree <input type="radio" name="question32" value="2"></label>
+                    <label>Neutral <input type="radio" name="question32" value="3"></label>
+                    <label>Somewhat agree <input type="radio" name="question32" value="4"></label>
+                    <label>Strongly agree <input type="radio" name="question32" value="5"></label>
+                </div>
+            </div>
+        </div>
+        <button type="button" onclick="validateAndSubmit()">Next</button>
+
+<script src="../Backstage/jsonupload.js"></script>
+
+<script>
+    function validateAndSubmit() {
+        const totalQuestions = 35; // Adjust based on the actual number of questions
+        const responses = {};
+
+        for (let i = 0; i < totalQuestions; i++) {
+            const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
+            if (!selectedOption) {
+                alert(`Please answer question ${i + 1}`);
+                return;
+            }
+            //responses[``] = selectedOption.value;
+            responses[`question${i + 1}`] = selectedOption.value;
+        }
+
+        localStorage.setItem('surveycontent', JSON.stringify(responses));
+        window.open("test_ch.html","_self");
+    }
+</script>
+</body>
+</html>

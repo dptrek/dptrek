@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dark Patterns Classification</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+        .box {
+            width: 45%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            height: 300px;
+        }
+        .box-1 {
+            width: 45%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        .box h3 {
+            text-align: center;
+        }
+        .draggable {
+            cursor: move;
+            border: 1px solid #000;
+            padding: 5px;
+            margin: 5px;
+            background-color: #f9f9f9;
+        }
+        .dropzone {
+            min-height: 120px;
+            border: 1px dashed #ccc;
+            margin-bottom: 10px;
+            padding: 5px;
+            background-color: #e6e6e6;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .instructions {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<h2 class="instructions">Drag and Drop the Definitions and Examples into the Correct Dark Patterns</h2>
+
+<div class="container">
+    <div class="box">
+        <h3>Definitions</h3>
+        <div class="draggable" draggable="true" id="def1">Users are required to do something</div>
+        <div class="draggable" draggable="true" id="def2">Users are presented with a default option that has already been selected for them</div>
+        <div class="draggable" draggable="true" id="def3">Users are persistently interrupted by requests to do something</div>
+        <div class="draggable" draggable="true" id="def4">Users are not easy to complete something they want</div>
+        <div class="draggable" draggable="true" id="def5">Some key information is hidden</div>
+    </div>
+    <div class="box">
+        <h3>Examples</h3>
+        <div class="draggable" draggable="true" id="ex1">Every time I open the app, it informs me that I should enable permissions to get the latest news.</div>
+        <div class="draggable" draggable="true" id="ex2">When I first open the shopping website and want to browse the items, it asks me to register.</div>
+        <div class="draggable" draggable="true" id="ex3">When I begin to sign up for a new account, I find it has pre-selected a checkbox indicating I will receive discount messages.</div>
+        <div class="draggable" draggable="true" id="ex4">When I want to buy an item, I find the cart has an extra item.</div>
+        <div class="draggable" draggable="true" id="ex5">When I want to disable the auto-payment method, it is hard for me to find the right way.</div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="box-1">
+        <h3>Dark Patterns</h3>
+        <div id="Nagging" class="dropzone">Nagging</div>
+        <div id="Sneaking" class="dropzone">Sneaking</div>
+        <div id="ForcedAction" class="dropzone">Forced Action</div>
+        <div id="InterfaceInterference" class="dropzone">Interface Interference</div>
+        <div id="Obstruction" class="dropzone">Obstruction</div>
+    </div>
+</div>
+
+<button class="btn" onclick="saveResults()">Save Results</button>
+
+<script>
+document.querySelectorAll('.draggable').forEach(item => {
+    item.addEventListener('dragstart', dragStart);
+});
+
+document.querySelectorAll('.dropzone').forEach(zone => {
+    zone.addEventListener('dragover', allowDrop);
+    zone.addEventListener('drop', drop);
+});
+
+function dragStart(event) {
+    event.dataTransfer.setData("text/plain", event.target.id);
+}
+
+function allowDrop(event) {
+    event.preventDefault();
+}
+
+function drop(event) {
+    event.preventDefault();
+    const data = event.dataTransfer.getData("text/plain");
+    const element = document.getElementById(data);
+    const zone = event.target;
+    
+    if (!zone.classList.contains('dropzone') || zone.contains(element)) {
+        return;
+    }
+    
+    // Check for existing children in the dropzone
+    const existingItems = zone.querySelectorAll('.draggable');
+    let defCount = 0;
+    let exCount = 0;
+    existingItems.forEach(item => {
+        if (item.id.startsWith('def')) defCount++;
+        if (item.id.startsWith('ex')) exCount++;
+    });
+    
+    if ((element.id.startsWith('def') && defCount >= 1) || (element.id.startsWith('ex') && exCount >= 1)) {
+        alert('Each dark pattern can only have one definition and one example.');
+        return;
+    }
+    
+    zone.appendChild(element);
+}
+
+function saveResults() {
+    const results = {};
+    document.querySelectorAll('.dropzone').forEach(zone => {
+        const items = [];
+        zone.querySelectorAll('.draggable').forEach(item => {
+            items.push(item.id);
+        });
+        results[zone.id] = items;
+    });
+
+    for (let key in results) {
+        let defCount = 0;
+        let exCount = 0;
+        results[key].forEach(item => {
+            if (item.startsWith('def')) defCount++;
+            if (item.startsWith('ex')) exCount++;
+        });
+        if (defCount > 1 || exCount > 1) {
+            alert('Error: Each dark pattern can only have one definition and one example.');
+            return;
+        }
+    }
+    
+    localStorage.setItem('testdp', JSON.stringify(results));
+    window.open("inform_survey.html","_self");
+}
+</script>
+
+</body>
+</html>

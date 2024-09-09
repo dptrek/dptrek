@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Survey</title>
+    <style>
+    #popup_submit {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <form id="surveyForm" style="margin-left: 50px;">
+        <div>
+            <label for="age">1. What is your age?</label><br>
+            <input type="radio" id="18-22" name="age" value="1">
+            <label for="18-22">18-22</label><br>
+            <input type="radio" id="23-25" name="age" value="2">
+            <label for="23-25">23-25</label><br>
+            <input type="radio" id="26-30" name="age" value="1">
+            <label for="26-30">26-30</label><br>
+            <input type="radio" id="31 and above" name="age" value="2">
+            <label for="31 and above">31 and above</label><br>
+        </div>
+        <div>
+            <p>2. What is your gender?</p>
+            <input type="radio" id="male" name="gender" value="1">
+            <label for="male">Male</label><br>
+            <input type="radio" id="female" name="gender" value="2">
+            <label for="female">Female</label><br>
+            <input type="radio" id="non-binary" name="gender" value="3">
+            <label for="non-binary">Non-binary / third gender</label><br>
+            <input type="radio" id="prefer-not-to-say-gender" name="gender" value="4">
+            <label for="prefer-not-to-say-gender">Prefer not to say</label>
+        </div>
+        <div>
+            <p>3. Please specify your race.</p>
+            <input type="radio" id="caucasian" name="race" value="1">
+            <label for="caucasian">Caucasian</label><br>
+            <input type="radio" id="black" name="race" value="2">
+            <label for="black">Black or African-American</label><br>
+            <input type="radio" id="asian" name="race" value="3">
+            <label for="asian">Asian</label><br>
+            <input type="radio" id="native-american" name="race" value="4">
+            <label for="native-american">Native American</label><br>
+            <input type="radio" id="native-hawaiian" name="race" value="5">
+            <label for="native-hawaiian">Native Hawaiian or Pacific Islander</label><br>
+            <input type="radio" id="prefer-not-to-say-race" name="race" value="6">
+            <label for="prefer-not-to-say-race">Prefer not to say</label><br>
+            <input type="radio" id="other" name="race" value="7">
+            <label for="other">Other</label>
+        </div>
+        <div>
+            <p>4. What is your highest level of education? If you are currently studying, please indicate your current level.</p>
+            <input type="radio" id="some-high-school" name="education" value="1">
+            <label for="some-high-school">Some High School</label><br>
+            <input type="radio" id="high-school" name="education" value="2">
+            <label for="high-school">High School</label><br>
+            <input type="radio" id="some-college" name="education" value="3">
+            <label for="some-college">Some College</label><br>
+            <input type="radio" id="associates-degree" name="education" value="4">
+            <label for="associates-degree">Associate's Degree</label><br>
+            <input type="radio" id="bachelors-degree" name="education" value="5">
+            <label for="bachelors-degree">Bachelor's Degree</label><br>
+            <input type="radio" id="masters-degree" name="education" value="6">
+            <label for="masters-degree">Master's Degree</label><br>
+            <input type="radio" id="phd" name="education" value="7">
+            <label for="phd">Ph.D. or higher</label><br>
+            <input type="radio" id="trade-school" name="education" value="8">
+            <label for="trade-school">Trade School</label><br>
+            <input type="radio" id="prefer-not-to-say-education" name="education" value="9">
+            <label for="prefer-not-to-say-education">Prefer not to say</label>
+        </div>
+        <div>
+            <label for="yearOfStudy">5. What year are you in at your current study? If you have graduated, please fill in N/A.</label><br>
+            <input type="text" id="yearOfStudy" name="yearOfStudy"><br>
+            <label for="major"> What is your major?</label><br>
+            <input type="text" id="major" name="major">
+        </div>
+        <div>
+            <p>6. How often have you received training on dark patterns before?</p>
+            <input type="radio" id="never" name="training" value="Never">
+            <label for="never">Never</label><br>
+            <input type="radio" id="once" name="training" value="Once">
+            <label for="once">Once</label><br>
+            <input type="radio" id="2-5-times" name="training" value="2-5 times">
+            <label for="2-5-times">2-5 times</label><br>
+            <input type="radio" id="5-10-times" name="training" value="5-10 times">
+            <label for="5-10-times">5-10 times</label><br>
+            <input type="radio" id="more-than-10-times" name="training" value=">10 times">
+            <label for="more-than-10-times">>10 times</label>
+        </div>
+        <div>
+    <p>7. Have you been a victim of any of the following dark patterns?</p>
+    
+    <input type="checkbox" id="nagging" name="darkPatterns" value="Nagging">
+    <label for="nagging">Nagging: Users are persistently interrupted by requests to do something</label>
+
+            <div></div>
+    
+    <input type="checkbox" id="obstruction" name="darkPatterns" value="Obstruction">
+    <label for="obstruction">Obstruction: Users are not easy to complete something they want</label>
+
+            <div></div>
+    
+    <input type="checkbox" id="sneaking" name="darkPatterns" value="Sneaking">
+    <label for="sneaking">Sneaking: Some key information is hidden</label>
+
+            <div></div>
+    
+    <input type="checkbox" id="forced-action" name="darkPatterns" value="Forced Action">
+    <label for="forced-action">Forced Action: Users are required to do something</label>
+
+            <div></div>
+    
+    <input type="checkbox" id="interface-interference" name="darkPatterns" value="Interface Interference">
+    <label for="interface-interference">Interface Interference: Users are presented with a default option that has already been selected for them</label>
+
+            <div></div>
+
+    <input type="checkbox" id="none" name="darkPatterns" value="none">
+    <label for="none">None of above</label>
+</div>
+
+        <button type="button" onclick="validateAndSave()">Submit</button>
+
+</form>
+
+    <div id="popup_submit">
+        <h2>You have completed all parts！</h2>
+        <p>Please submit your record. </p>
+        <button id="submitjson">Submit</button>
+    </div>
+    <script>
+        function validateAndSave() {
+            const popsubmit = document.getElementById('popup_submit');
+            const age = document.querySelector('input[name="age"]:checked');
+            const gender = document.querySelector('input[name="gender"]:checked');
+            const race = document.querySelector('input[name="race"]:checked');
+            const education = document.querySelector('input[name="education"]:checked');
+            const yearOfStudy = document.getElementById('yearOfStudy').value;
+            const major = document.getElementById('major').value;
+            const training = document.querySelector('input[name="training"]:checked');
+            const darkPatterns = Array.from(document.querySelectorAll('input[name="darkPatterns"]:checked')).map(dp => dp.value);
+
+            if (!age || !gender || !race || !education || !yearOfStudy || !major || !training || darkPatterns.length === 0) {
+                alert("Please complete all questions.");
+                return;
+            }
+
+            const essentialInfo = {
+                age: age.value,
+                gender: gender.value,
+                race: race.value,
+                education: education.value,
+                yearOfStudy: yearOfStudy,
+                major: major,
+                training: training.value,
+                darkPatterns: darkPatterns
+            };
+
+            localStorage.setItem('essentialinfo', JSON.stringify(essentialInfo));
+                popsubmit.style.display = "block";
+        }
+    </script>
+
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1022.0.min.js"></script>
+<script src="../Backstage/jsonupload.js"></script>
+<script>
+// 定义 AWS S3 存储桶的信息
+const AWS_S3_REGION = 'ap-southeast-1';
+const AWS_S3_ACCESS_KEY_ID = 'AKIA2UC3ADDLJ3JDXA5O';
+const AWS_S3_SECRET_ACCESS_KEY = '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';
+const AWS_S3_BUCKET_NAME = 'dpjsonstore';
+    
+const submitBtn = document.getElementById("submitjson");
+submitBtn.addEventListener('click', function(){
+    uploadJSONToS3();
+    event.preventDefault();
+});
+</script>
+</body>
+</html>
