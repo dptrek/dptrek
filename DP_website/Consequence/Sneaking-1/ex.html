@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product Details</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../dock/dock.css">
+<link rel="stylesheet" href="../../setting/process_display.css">
+</head>
+<body>
+  <div class="floating-bar">
+    <img src="../../setting/pro_experiment.png" alt="Your Image">
+</div>
+
+<div class="product-details" style="margin-top: 0px;">
+
+    <button id="addToCartBtn">ADD TO CART</button>
+
+    <div class="dock" id="dock_left">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+
+<!-- 文本框 -->
+<div id="reportModal" class="modal">
+  <div id="modal-content" class="modal-content">
+    <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+    <h2>Report problems of the website</h2>
+    <p>Please specify details about your report in the text box below:</p>
+    <textarea id="reportReason" rows="6" cols="50"></textarea>
+    <button onclick="submitReport()">Submit</button>
+  </div>
+</div>
+
+</div>
+<script src="../dock/dock_code.js"></script>
+<script>
+    document.getElementById('addToCartBtn').addEventListener('click', function() {
+    // 在此处添加代码以跳转到下一个界面
+    window.location.href = 'cart.html';
+});
+</script>
+
+<script>
+    // 提交报告
+  function submitReport() {
+    var reason = document.getElementById("reportReason").value;
+    saveComment(reason);
+    // 在这里可以添加提交报告的逻辑
+    console.log("Reason for report: ", reason);
+    closeModal(); // 提交后关闭模态框
+    //window.open("../Congrats/Sneaking-1.html","_self");
+  }
+
+
+  function show_Page(){
+
+}
+  </script>
+</body>
+</html>
+

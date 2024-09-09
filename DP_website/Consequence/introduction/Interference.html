@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interface Interference</title>
+    <link rel="stylesheet" href="../../setting/process_display.css">
+    <style>
+        /* 样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 500px;
+            display: block;
+            margin: 20px auto;
+        }
+        .next {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_learning.png" alt="Your Image">
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h2>Interface Interference</h2>
+        <div class="description">
+            <p>The previous example you've just experienced is called <strong style="color:red;">Interface Interference</strong>.</p>
+            <p>- <strong style="color:red;">Interface Interference</strong> refers to any obstacles, distractions, or disruptions in a user interface that hinder the user's ability to accomplish their tasks efficiently and effectively.</p>
+            <p>- In the previous example, by overlooking the <strong style="color:red;">Interface Interference</strong> pattern on the website—leaving that box checked—you unknowingly agree to receive personalized ads, which can lead to additional costs or losses for you.</p>
+            <h3>Solution: </h3> <p> 1. You can <strong>uncheck</strong> the pre-selected boxes, e.g., the “Enable Personalized Ads” box.</p>
+            <p> 2. You can <strong>leave</strong> or <strong>report the websites</strong> that use similar <strong style="color:red;">Interface Interference</strong></p>
+            <p><h3>Real-world example #1:</h3> The site opens this pop-up, ironically on an article about Dark Patterns. The big blue button allows the user to connect their twitter account, but the option the follow the site’s twitter is already checked. If users click 'Connect Twitter Account', @Linkis_com promotion ads will appear in their twitter account</p>
+            <img src="image/interface.png" alt="Screenshot">
+            <p><h3>Real-world example #2:</h3> Real-world example #2: On Next.co.uk, the radio button for a free first Next directory is pre-selected. However, if users don’t read the fine print, they may unwittingly consent to a credit check and the opening of a credit account. This account sends brochures four times a year, each costing £3.75, despite being typically free from other businesses.</p>
+            <img src="image/interface-1.png" alt="Screenshot">
+        </div>
+        
+    </div>
+
+    <!-- 下一步按钮 -->
+    <button onclick="gonext('Interference')" class="next" id="backButton">Next</button>
+    <script src='script.js'></script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+</body>
+</html>

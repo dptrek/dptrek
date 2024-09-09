@@ -1,0 +1,168 @@
+ /* 左侧 dock 样式 */
+ #dock_left {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100px; /* 设置 dock 宽度 */
+    height: 100%;
+    background-color: #D3D3D3; /* dock 背景颜色 */
+    z-index: 9998; /* 确保 dock 处于最顶层 */
+    margin-top: 80px;
+}
+
+#dock_right{
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 100%;
+  background-color: #FFA500;
+  z-index: 9999;
+  overflow-y: 100px;
+} 
+/* dock 图标样式 */
+.dock-icon {
+    position: relative; /* 设置图标相对定位 */
+    display: block;
+    width: 100px;
+    height: 70px;
+    background-color: white; /* 图标背景颜色 */
+    margin-bottom: 10px; /* 图标之间的间距 */
+    cursor: pointer;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat; /* 防止背景图片重复 */
+    border-radius: 10%;
+}
+
+/* dock 图标的 hover 效果 */
+.dock-icon:hover {
+    background-color: #777; /* 鼠标悬停时的背景颜色 */
+}
+/* 图标上的数字样式 */
+.dock-icon .badge {
+    position: absolute; /* 设置绝对定位 */
+    top: 0;
+    right: 0;
+    background-color: red; /* 数字背景颜色 */
+    color: white; /* 数字颜色 */
+    padding: 2px 5px; /* 数字内边距 */
+    border-radius: 50%; /* 数字的圆角 */
+    font-size: 12px; /* 数字的字体大小 */
+}
+
+/* 隐藏工具提示文本 */
+.dock-icon .tooltip-text {
+  visibility: hidden;
+  width: 120px; /* 工具提示的宽度 */
+  background-color: #555; /* 背景颜色 */
+  color: #fff; /* 文字颜色 */
+  text-align: center; /* 文字居中 */
+  border-radius: 6px; /* 圆角 */
+  padding: 5px 0; /* 内边距 */
+  position: absolute; /* 绝对定位 */
+  z-index: 1; /* 保证在其他元素上方 */
+  top: 50%; /* 垂直居中 */
+  left: 125%; /* 位于图标右边 */
+  margin-top: -16px; /* 垂直居中调整 */
+  opacity: 0; /* 透明度 */
+  transition: opacity 0.3s; /* 渐变效果 */
+}
+
+/* 工具提示的箭头 */
+.dock-icon .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 100%; /* 位于工具提示的左边 */
+  margin-top: -5px; /* 垂直居中 */
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent #555 transparent transparent; /* 工具提示的箭头颜色 */
+}
+
+/* 悬停显示工具提示文本 */
+.dock-icon:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+  /* 模态框样式 */
+#reportModal {
+    display: none; /* 默认隐藏 */
+    position: fixed; /* 固定定位，覆盖在页面上 */
+    z-index: 9999; /* 堆叠顺序 */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* 允许滚动 */
+    background-color: rgba(0,0,0,0.4); /* 半透明背景 */
+  }
+  
+  /* 模态框内容 */
+  #modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 居中 */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+  }
+  
+  /* 关闭按钮样式 */
+  #close_report {
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  #close_report:hover,
+  #close_report:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+
+.tooltip-container_noti {
+    position: relative;
+    display: none;
+    width: 400px; /* 固定宽度 */
+    background-color: #ffffff;
+    color: #000;
+    border: 2px solid #007bff;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 9999;
+}
+
+.tooltip-confer-image {
+    float: left;
+    width: 60px; /* 宽度60px */
+    height: 100%; /* 高度100% */
+}
+
+.tooltip-confer-image img {
+    display: block;
+    margin: 0 auto; /* 图片居中 */
+    width: 60px; /* 宽度60px */
+    height: 60px; /* 高度60px */
+}
+
+.tooltip-confer-content {
+    margin-left: 70px; /* 调整内容距离图片的间距 */
+    height: 100%;
+    display: flex;
+    align-items: center; /* 垂直居中对齐 */
+}
+
+.close-button_noti {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+

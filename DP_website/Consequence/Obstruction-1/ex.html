@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../dock/dock.css">
+    <link rel="stylesheet" href="../../setting/process_display.css">
+    <title>Your Website</title>
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_experiment.png" alt="Your Image">
+    </div>
+
+    <div class="dock" id="dock_left">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+<!-- 文本框 -->
+<div id="reportModal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+      <h2>Report problems of the website</h2>
+      <p>Please specify details about your report in the text box below:</p>
+      <textarea id="reportReason" rows="6" cols="50"></textarea>
+      <button onclick="submitReport()">Submit</button>
+    </div>
+  </div>
+
+
+
+<div style="margin-left: 100px;">
+    <!-- Cookie Notice Container -->
+    <div id="cookie-notice" class="hidden">
+        <div class="cookie-content">
+            <p>This website uses cookies to ensure you get the best experience on our website.</p>
+            <div class="btn-container">
+                <button id="accept-all-cookies">Accept All Cookies</button>
+                <div class="tooltip-container" id="step_edu_1">
+                </div>
+
+                <button id="refuse-cookies">Refuse Cookies</button>           
+            </div>
+            
+        </div>
+
+    
+
+        <div id="refuse-step-1" class="hidden">
+            <p>Step 1: Choose the types of cookies to refuse:</p>
+            <label><input type="checkbox" id="analytics"> Analytics Cookies</label>
+            <label><input type="checkbox" id="preferences"> Marketing Cookies</label>
+            <button id="next-step-2">Next</button>
+        </div>
+
+        <div id="refuse-step-2" class="hidden">
+            <p>Step 2: Choose additional reasons:</p>
+            <label><input type="checkbox" id="reasons_1"> I don't need it</label>
+            <label><input type="checkbox" id="reasons_2"> Privacy concern</label>
+            <!-- Add more options as needed -->
+            <button id="next-step-3">Next</button>
+        </div>
+
+        <div id="refuse-step-3" class="hidden">
+            <p>Step 3: Finalize your cookie preferences:</p>
+            <!-- Add more options as needed -->
+            <button id="accept-refused-cookies"> Confirm Refused Cookies</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tooltip-container_noti" id="tooltip-confer-1">
+    <div class="tooltip-confer-image">
+    <img src="../../setting/bell.gif" alt="Tooltip Image">
+  </div>
+  <div class="tooltip-confer-content">
+      <span class="close-button_noti" onclick="closenoti_else('tooltip-confer-1'); fail_step()">&times;</span>
+      
+      <p>
+        <span style="display: block;"><strong>Free Shipping on All Orders! </strong></span>
+        Today Only! That's Right - Enjoy Complimentary Shipping on Every Purchase, 
+        No Minimum Spend Required! Whether It's a Small Treat for Yourself or a Gift for Someone Special, 
+        We'll Deliver It Straight to Your Doorstep for Free. Shop Now and Save!</p>
+  </div>
+  </div>
+
+
+
+    <script src="script.js"></script>
+    <script src="../dock/dock_code.js"></script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+    <script>
+          function submitReport() {
+    console.log("submitReport called");
+  
+    // 调用 successful_step 函数
+    successful_step();
+    console.log("successful_step called");
+  
+    // 获取 reportReason 的值
+    var reason = document.getElementById("reportReason");
+    if (reason) {
+      //console.log("Reason for report: ", reason.value);
+      saveComment(reason.value);
+    } else {
+      console.error("reportReason element not found");
+    }
+  
+    // 提交后关闭模态框
+    closeModal();
+        // 调用 successful_step 函数
+        successful_step();
+        console.log("successful_step called");
+  }
+
+
+  function show_Page(){
+    successful_step();     
+}
+    </script>
+</body>
+</html>
+

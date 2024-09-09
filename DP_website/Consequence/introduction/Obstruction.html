@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Obstruction</title>
+    <link rel="stylesheet" href="../../setting/process_display.css">
+    <style>
+        /* 样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        img {
+            max-width: 500px;
+            display: block;
+            margin: 20px auto;
+        }
+        .next {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_learning.png" alt="Your Image">
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h2>Obstruction</h2>
+        <div class="description">
+            <p>The example you've just experienced is called <strong style="color:red;">Obstruction</strong>.</p>
+            <p>- <strong style="color:red;">Obstruction</strong> refers to a manipulative pattern that, once used, results in consequences similar to this: The user is faced with barriers or hurdles, making it hard for them to complete their task or access information.</p>
+            <p>- In the privious example, accepting unessential cookies like marketing cookies means you're giving the green light for websites to track your online behavior. 
+                It's like opening the door for them to follow your digital footsteps, 
+                showing you ads tailored to your interests.</p>
+            <h3>Solution: </h3> <p> 1. You can <strong>reject</strong> all unessential cookies which utilize this dark pattern</p>
+            <p> 2. You can <strong>leave</strong> or <strong>report the websites</strong> using similar <strong style="color:red;">Obstruction</strong></p>
+            <p><h3>Real-world example #1:</h3> Facebook used an <strong style="color:red;">Obstruction</strong> technique by making it easy to agree to privacy-invading settings but difficult to reject them. Facebook's interface had a button to “accept and continue” with just one click, but to reject the settings, the user had to click an unclear button and toggle a switch to the left. This made it confusing for users, and they couldn't be sure if they successfully protected their privacy.</p>
+            <img src="image/obstruction_fb.png" alt="Screenshot">
+            <p><h3>Real-world example #2:</h3> iOS 6 hides the option to disable ad tracking in an irrelevant location and uses trick wording (double negative) to confuse the user.</p>
+            <img src="image/obstruction-1.jpeg" alt="Screenshot">
+        </div>
+        
+    </div>
+
+    <!-- 下一步按钮 -->
+    <button onclick="gonext('Obstruction')" class="next" id="backButton">Next</button>
+    <script src='script.js'></script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+</body>
+</html>

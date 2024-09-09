@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home 页面</title>
+    <link rel="stylesheet" href="dock.css">
+</head>
+<body>
+    <div id="tooltip-confer">这是一个浮窗</div>
+
+    <!-- dock -->
+    <div class="dock">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="showPage(1)" style="background-image: url(icon-email.png)" id="icon-email">
+            <span class="badge" id="badge_1">0</span>
+        </div>
+        <!-- 图标2 -->
+        <div class="dock-icon" onclick="showPage(2)" style="background-image: url(icon-notification.png)" id="icon-notification">
+            <span class="badge" id="badge_2">0</span>
+        </div>
+        <!-- 图标3 -->
+        <div class="dock-icon" onclick="showPage(3)" style="background-image: url(icon-card.png)" id="icon-card">
+            <span class="badge" id="badge_3">0</span>
+        </div>
+
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtn()" style="background-image: url(icon-report.png)"> 
+        </div>
+    </div>
+
+    <!-- 文本框 -->
+<div id="reportModal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+      <h2>Reason for Report</h2>
+      <textarea id="reportReason" rows="4" cols="50"></textarea>
+      <button onclick="submitReport()">Submit</button>
+    </div>
+  </div>
+
+    <!-- 页面主体内容 -->
+    <div style="margin-left: 60px;">
+        <h1>Home 页面</h1>
+        <!-- 这里放置你的界面内容 -->
+
+        <button onclick="renew()">Renew</button>
+    </div>
+
+    <script src="dock_code.js"></script>
+</body>
+</html>

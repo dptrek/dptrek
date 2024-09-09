@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home 页面</title>
+    <link rel="stylesheet" href="dock/dock.css">
+
+
+    <style>
+        .icon-introduction img.intro_dock {
+            width: 50px; /* 设置图片宽度 */
+            height: 70px; /* 设置图片高度 */
+        }
+
+        .process_image{
+            width: 500px;
+            height: auto;
+        }
+
+  
+    </style>
+</head>
+<body>
+
+    <!-- 左侧dock -->
+    <div class="dock" id="dock_left">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="showPage(1)" style="background-image: url(dock/icon-email.png)" id="icon-email">
+            <span class="badge" id="badge_1">0</span>
+        </div>
+        <!-- 图标2 -->
+        <div class="dock-icon" onclick="showPage(2)" style="background-image: url(dock/icon-notification.png)" id="icon-notification">
+            <span class="badge" id="badge_2">0</span>
+        </div>
+        <!-- 图标3 -->
+        <div class="dock-icon" onclick="showPage(3)" style="background-image: url(dock/icon-card.png)" id="icon-card">
+            <span class="badge" id="badge_3">0</span>
+        </div>
+
+    </div>
+
+
+
+    <!-- 页面主体内容 -->
+    <div style="margin-left: 60px;">
+        <h1>Home Page</h1>
+        <!-- 图标介绍部分 -->
+<div class="icon-introduction">
+    <h2>Icon Introduction</h2>
+    <ul>
+        <li>
+            <strong>Icon 1:</strong> This is the emails information.
+            <img src="dock/icon-email.png" alt="Email Icon" class="intro_dock">
+        </li>
+        <li>
+            <strong>Icon 2:</strong> This is the notifications.
+            <img src="dock/icon-notification.png" alt="Notification Icon" class="intro_dock">
+        </li>
+        <li>
+            <strong>Icon 3:</strong> This is cards information.
+            <img src="dock/icon-card.png" alt="Card Icon" class="intro_dock">
+        </li>
+        <li>
+            <strong>Icon 4:</strong> This is Back Button. If you think you cannot solve the dark patterns, you can skip it by using this button.
+            <img src="dock/icon-back.png" alt="Back Icon" class="intro_dock">
+        </li>
+        <li>
+            <strong>Icon 5:</strong> This is report Button. If you have any comments about the patterns you can click this to submit.
+            <img src="dock/icon-report.png" alt="Report Icon" class="intro_dock">
+        </li>
+    </ul>
+</div>
+    </div>
+
+    
+        <div style="margin-left: 60px;">
+            <h2>Consequence Education</h2>
+            <img src="Process-1.png" alt="Process" class="process_image">
+            <ul>
+                <li><a href="introduction/Nagging.html">Nagging</a></li>
+                <li><a href="introduction/Obstruction.html">Obstruction</a></li>
+                <li><a href="introduction/Sneaking.html">Sneaking</a></li>
+                <li><a href="introduction/Interference.html">Interface Interference</a></li>
+                <li><a href="introduction/Forced.html">Forced Action</a></li>
+                <!-- 添加更多的目录按钮 -->
+            </ul>
+        </div> 
+    
+        <div style="margin-left: 60px;" >
+            <h2>Continue</h2>
+            <img src="Process-2.png" alt="Process" class="process_image">
+            <p>When you have completed the first part, please click this <a href="../Test/test_home.html">link</a> to enter the test</p>
+        </div>
+
+
+            <!--右侧 dock -->
+    <div class="dock" id="dock_right">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(dock/icon-back.png)" id="icon-back">
+        </div>
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(dock/icon-report.png)" id="reporticon"> 
+        </div>
+    </div>
+
+    
+    <script src="dock/dock_code.js"></script>
+    <script>
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-icon {
+    position: relative; /* Make the parent container for absolute positioning */
+    cursor: pointer;
+    width: 10%; /* 将图片大小调整为原始大小的 10% */
+    margin-left: 280px;
+}
+
+.cart-interface {
+    margin-top: 20px;
+}
+
+.cart-items {
+    margin-top: 20px;
+}
+
+.item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.checkout-btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    border-radius: 30px; /* 设置圆角半径为按钮高度的一半，创建椭圆形按钮 */ 
+    
+}
+
+/* Hidden class */
+.hidden {
+    display: none;
+}
+
+
+.product-details {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#addToCartBtn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 30px; /* 设置圆角半径为按钮高度的一半，创建椭圆形按钮 */ 
+    margin-right: -650px; /* 向右移动 20px */
+    margin-top: 360px; /* 向上移动 10px */
+}
+
+#addToCartBtn:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+body {
+    font-family: Arial, sans-serif;
+    /* 设置背景图像的路径 */
+    /*background-image: url(backgroud.png);*/
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+    /* 设置背景图像的位置，这里是居中 */
+    background-position: center;
+    /* 设置背景图像的大小，这里是cover，使其覆盖整个屏幕 */
+    background-size: cover;
+    /* 使背景图像固定不随页面滚动而移动 */
+    background-attachment: fixed;
+}

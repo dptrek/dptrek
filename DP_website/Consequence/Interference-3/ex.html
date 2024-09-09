@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Default Tipping Setting</title>
+<link rel="stylesheet" href="../dock/dock.css">
+<link rel="stylesheet" href="../../setting/process_display.css">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        /* 设置背景图像的路径 */
+        /*background-image: url(backgroud.png);*/
+        background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+        /* 设置背景图像的位置，这里是居中 */
+        background-position: center;
+        /* 设置背景图像的大小，这里是cover，使其覆盖整个屏幕 */
+        background-size: cover;
+        /* 使背景图像固定不随页面滚动而移动 */
+        background-attachment: fixed;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type="checkbox"] {
+        margin-right: 5px;
+    }
+    button {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+
+#container_content {
+    width: 240px;
+    background-color: #f2f2f259;
+    padding: 10px;
+    display: inline-block;
+}
+</style>
+</head>
+<body>
+
+    <div class="floating-bar">
+        <img src="../../setting/pro_experiment.png" alt="Your Image">
+    </div>
+
+<div style="margin-left: 100px; margin-top: 150px;">
+<h2>Order Food Online Today!</h2>
+<div class="container" id="container_content">
+<p >Welcome to our online food ordering platform! Explore a diverse selection of delicious dishes, from hearty meals to delightful desserts. Enjoy user-friendly navigation, secure transactions, 
+    and prompt delivery to your doorstep. Start ordering now for a convenient and satisfying dining experience online!</p>
+</div>
+
+<form id="tipForm">
+    <label style="color: white; ">
+        <input type="checkbox" id="defaultTip" name="defaultTip" checked>
+        20% tip
+    </label>
+    <button type="submit" id="submitBtn">Continue Browse</button>
+    
+</form>
+</div>
+
+
+    <div class="dock" id="dock_left">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+
+
+<!-- 文本框 -->
+<div id="reportModal" class="modal">
+    <div id="modal-content" class="modal-content">
+      <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+      <h2>Report problems of the website</h2>
+      <p>Please specify details about your report in the text box below:</p>
+      <textarea id="reportReason" rows="6" cols="50"></textarea>
+      <button onclick="submitReport()">Submit</button>
+    </div>
+  </div>
+
+  <div class="tooltip-container_noti" id="tooltip-confer-1">
+    <div class="tooltip-confer-image">
+    <img src="../../setting/bell.gif" alt="Tooltip Image">
+  </div>
+  <div class="tooltip-confer-content">
+      <span class="close-button_noti" onclick="closenoti_else('tooltip-confer-1'); fail_step()">&times;</span>
+      
+      <p>
+        <span style="display: block;"><strong>Bill Information </strong></span>
+        Please be informed that a pre-notification charge of $50 will be applied for subsequent shopping gratuity payment.</p>
+  </div>
+  </div>
+
+<script src="../dock/dock_code.js"></script>
+<script src="script.js"></script>
+<script src="../../Backstage/insert_code_edu.js"></script>
+</body>
+</html>
+

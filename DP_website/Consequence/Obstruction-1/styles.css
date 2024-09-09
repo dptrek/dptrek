@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+
+    max-width: 300px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 650px;
+  
+    /* 设置背景图像的路径 */
+    /*background-image: url(backgroud.png);*/
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent), url(background.png);
+    /* 设置背景图像的位置，这里是居中 */
+    background-position: center;
+    /* 设置背景图像的大小，使其完全包含在容器中 */
+    background-size: cover;
+    /* 使背景图像固定不随页面滚动而移动 */
+    background-attachment: fixed;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.back-to-home {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+#popup_tips_edu {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+#closePopup_tips_edu {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+
+
+#cookie-notice {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cookie-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.btn-container {
+    margin-top: 10px;
+}
+
+button {
+    padding: 8px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+#refuse-step-1,
+#refuse-step-2,
+#refuse-step-3 {
+    margin-top: 20px;
+}
+
+
+
+
+
+
+
+

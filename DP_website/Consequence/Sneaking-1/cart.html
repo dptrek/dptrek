@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../dock/dock.css">
+    <link rel="stylesheet" href="../../setting/process_display.css">
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_experiment.png" alt="Your Image">
+    </div>
+
+    <div class="container" style="margin-top: 150px;">
+        <h1>Shopping Cart</h1>
+        <div class="cart-icon" onclick="openCart()" id="cartBtn">
+            <!-- Shopping cart icon -->
+            <img src="cart-icon.png" alt="Shopping Cart">
+            <!-- Indicator for added protection plan -->
+            <div class="plan-indicator hidden"></div>
+        </div>
+
+        <!-- Shopping cart interface -->
+        <div id="cart-interface" class="cart-interface hidden">
+            <div class="cart-items"> 
+              <div class="item" id="bagitem">
+                <img src="bag.png" alt="bag" style="width: 30px; height: 50px;">
+                <p>Single School Backpack</p>
+                <p>Price: $50</p>
+                <button class="close-btn-1" onclick="closebag()">Delete</button>
+              </div>
+            </div>           
+        </div>
+        <p style="color: gray;">Click cart to see details.</p>
+        <button class="checkout-btn">Proceed to Checkout</button>
+         
+    </div>
+   
+
+    <div class="dock" id="dock_left">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="show_Page()" style="margin-top: 30px; background-image: url(../dock/icon-back.png)" id="icon-back">
+            <span class="tooltip-text">Leave the website</span>
+        </div>
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(../dock/icon-report.png)" id="reporticon">
+            <span class="tooltip-text">Report the website</span> 
+        </div>
+    </div>
+
+<!-- 文本框 -->
+<div id="reportModal" class="modal">
+  <div id="modal-content" class="modal-content">
+    <span id="close_report" class="close" onclick="closeModal()">&times;</span>
+    <h2>Report problems of the website</h2>
+    <p>Please specify details about your report in the text box below:</p>
+    <textarea id="reportReason" rows="6" cols="50"></textarea>
+    <button onclick="submitReport()">Submit</button>
+  </div>
+</div>
+
+<div class="tooltip-container_noti" id="tooltip-confer-1">
+  <div class="tooltip-confer-image">
+  <img src="../../setting/bell.gif" alt="Tooltip Image">
+</div>
+<div class="tooltip-confer-content">
+    <span class="close-button_noti" onclick="closenoti_else('tooltip-confer-1'); fail_step()">&times;</span>       
+    <p>
+      <span style="display: block;"><strong> Shopping  🎉</strong></span>
+        Congratulations! You've just snagged amazing items for $59.99! Treat yourself, you deserve it! 
+        🛍️ Keep an eye out for more exclusive deals and exciting offers coming your way soon. Happy shopping!
+    </p>
+</div>
+</div>
+
+    <script src="script.js"></script>
+    <script src="../dock/dock_code.js"></script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+    <script>
+        // 提交报告
+      function submitReport() {
+        var reason = document.getElementById("reportReason").value;
+        saveComment(reason);
+        // 在这里可以添加提交报告的逻辑
+        console.log("Reason for report: ", reason);
+        closeModal(); // 提交后关闭模态框
+        successful_step();
+      }
+    
+    
+    function show_Page(){
+      successful_step();
+    }
+      </script>
+</body>
+</html>
+

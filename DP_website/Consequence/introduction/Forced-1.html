@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centered Image with Next Button</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+        #img-1 {
+            width: 80%;
+            height: auto;
+            display: block;
+            margin: auto;
+            margin-top: 100px;
+            border: 5px solid #000; /* 设置边框的宽度、样式和颜色 */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* 添加阴影效果，使边框更突出 */
+        }
+        .next-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            padding: 20px 30px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+    </style>
+    <link rel="stylesheet" href="../../setting/process_display.css">
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_learning.png" alt="Your Image">
+    </div>
+    <img src="image/Forced_intro.png" alt="Centered Image" id="img-1">
+    <button class="next-button" onclick="backBtnhome('Forced')">Next</button>
+    <script src="script.js"></script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+</body>
+</html>

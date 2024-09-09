@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Forced Action</title>
+    <link rel="stylesheet" href="../../setting/process_display.css">
+    <style>
+        /* 样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .description {
+            margin-bottom: 20px;
+        }
+        #forced-img {
+            max-width: 300px;
+            display: block;
+            margin: 20px auto;
+        }
+        #force-img-1 {
+            max-width: 600px;
+            display: block;
+            margin: 20px auto;
+        }
+        .next {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px 30px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-bar">
+        <img src="../../setting/pro_learning.png" alt="Your Image">
+    </div>
+    <div class="container" style="margin-top: 100px;">
+        <h2>Forced Action</h2>
+        <div class="description">
+            <p>The previous example you've just experienced is called <strong style="color:red;">Forced action</strong>.</p>
+            <p>- <strong style="color:red;">Forced action</strong> refers to a manipulative pattern that, once used, results in consequences similar to this: the user wants to do something, but they are required to do something else undesirable in return.</p>
+            <p>- In the previous example, when you're forced to subscribe to SMS updates, you'll start receiving a ton of promotional messages from the shopping store tempting you to spend more. Responding to these promotional SMS messages becomes a never-ending task that affects your online browsing experience and your shopping-related decision-making. </p>
+            <p>For your benefits, you may consider <strong>leave</strong> or <strong>report the websites</strong> that use similar <strong style="color:red;">Forced action</strong>.</p>
+            <p><h3>Real-world example #1:</h3> In the "Sign up" page of Dawn of War III, users are required to subscribe to the newsletter to create an account</p>
+            <img id="forced-img" src="image/forced.png" alt="Screenshot">
+            <p><h3>Real-world example #2:</h3> Better Working World forced users to accept the use of cookies on the site or they cannot continue.</p>
+            <img id="forced-img-1" src="image/forced-1.png" alt="Screenshot">
+        </div>
+    </div>
+
+    <!-- 下一步按钮 -->
+    <button onclick="gonext('Forced')" class="next" id="backButton">Next</button>
+    <script src="script.js">
+    </script>
+    <script src="../../Backstage/insert_code_edu.js"></script>
+</body>
+</html>

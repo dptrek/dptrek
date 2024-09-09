@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dock</title>
+    <link rel="stylesheet" href="dock_right.css">
+</head>
+<body>
+    <!-- dock -->
+    <div class="dock" id="dockContent">
+        <!-- 图标1 -->
+        <div class="dock-icon" onclick="showPage(1)" style="background-image: url(icon-email.png)" id="icon-email">
+        </div>
+        <!-- 图标2 -->
+        <div class="dock-icon" onclick="showPage(2)" style="background-image: url(icon-notification.png)" id="icon-notification">
+        </div>
+        <!-- 图标3 -->
+        <div class="dock-icon" onclick="showPage(3)" style="background-image: url(icon-card.png)" id="icon-card">
+        </div>
+        <!-- Report -->>
+        <div class="dock-icon" onclick="reportBtnfun()" style="background-image: url(icon-report.png)" id="reporticon"> 
+        </div>
+    </div>
+
+
+    <script src="dock_right.js"></script>
+</body>
+</html>
