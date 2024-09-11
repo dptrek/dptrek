@@ -356,10 +356,6 @@
 
         for (let i = 0; i < totalQuestions; i++) {
             const selectedOption = document.querySelector(`input[name="question${i}"]:checked`);
-            if (!selectedOption) {
-                alert(`Please answer question ${i + 1}`);
-                return;
-            }
             //responses[``] = selectedOption.value;
             responses[`question${i + 1}`] = selectedOption.value;
         }
