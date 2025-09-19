@@ -170,66 +170,34 @@ function uploadJSONToDropbox() {
     });
 }
 
-// === 上传到 GitHub ===
 function uploadJSONToGitHub() {
-    var jsonBlobData = generate_JSONBlob();
-    var blob = jsonBlobData.blob;
-    var fileName = jsonBlobData.fileName;
+    const jsonBlobData = generate_JSONBlob(); 
+    const blob = jsonBlobData.blob;
+    const fileName = jsonBlobData.fileName;
 
-    console.log("Uploading file:", fileName);
-    console.log("Blob size:", blob.size, "type:", blob.type);
-
-    // read Blob content
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.onload = async function() {
+        const base64Content = reader.result.split(",")[1]; //base64
         try {
-            const content = reader.result.split(",")[1]; // base64
-            const path = `${FOLDER}/${fileName}`;
-            const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
-
-            // overread
-            let sha = null;
-            const checkRes = await fetch(url, {
-                headers: { "Authorization": "token " + GITHUB_TOKEN }
+            const res = await fetch("https://你的Vercel域名/api/upload", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ fileName, content: base64Content })
             });
-            if (checkRes.ok) {
-                const json = await checkRes.json();
-                sha = json.sha;
-            }
-
-            // upload
-            const uploadRes = await fetch(url, {
-                method: "PUT",
-                headers: {
-                    "Authorization": "token " + GITHUB_TOKEN,
-                    "Accept": "application/vnd.github.v3+json"
-                },
-                body: JSON.stringify({
-                    message: "Upload " + fileName,
-                    content: content,
-                    branch: BRANCH,
-                    sha: sha || undefined
-                })
-            });
-
-            if (!uploadRes.ok) {
-                throw new Error(await uploadRes.text());
-            }
-
-            const result = await uploadRes.json();
-            console.log("Upload success:", result);
-            const fileUrl = result.content.html_url;
-
-            alert("JSON successful upload GitHub");
-
+            const data = await res.json();
+            console.log("Upload success:", data);
+            alert("JSON uploaded to GitHub successfully!");
         } catch (err) {
-            console.error("Error uploading to GitHub:", err);
-            alert("upload GitHub fail, save to local.");
-            Download_JSONFile();
+            console.error("Error uploading:", err);
+            alert("Upload failed. Saving locally.");
+            Download_JSONFile(); 
         }
     };
-    reader.readAsDataURL(blob); 
+    reader.readAsDataURL(blob);
 }
+
+
+
 
 
 
