@@ -23,14 +23,16 @@
     <form id="surveyForm" style="margin-left: 50px;">
         <div>
             <label for="age">1. What is your age?</label><br>
-            <input type="radio" id="18-22" name="age" value="1">
-            <label for="18-22">18-22</label><br>
-            <input type="radio" id="23-25" name="age" value="2">
-            <label for="23-25">23-25</label><br>
-            <input type="radio" id="26-30" name="age" value="1">
-            <label for="26-30">26-30</label><br>
-            <input type="radio" id="31 and above" name="age" value="2">
-            <label for="31 and above">31 and above</label><br>
+            <input type="radio" id="b60" name="age" value="1">
+            <label for="b60">Below 60</label><br>
+            <input type="radio" id="60-64" name="age" value="1">
+            <label for="60-64">60-64</label><br>
+            <input type="radio" id="65-69" name="age" value="2">
+            <label for="65-69">65-69</label><br>
+            <input type="radio" id="70-74" name="age" value="1">
+            <label for="70-74">70-74</label><br>
+            <input type="radio" id="75 and above" name="age" value="2">
+            <label for="75 and above">75 and above</label><br>
         </div>
         <div>
             <p>2. What is your gender?</p>
@@ -176,6 +178,7 @@
 
 
 <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1022.0.min.js"></script>
+<script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
 <script src="../Backstage/jsonupload.js"></script>
 <script>
 // // 定义 AWS S3 存储桶的信息
