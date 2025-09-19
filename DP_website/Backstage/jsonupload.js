@@ -172,63 +172,72 @@ function uploadJSONToDropbox() {
 
 //const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
 
-const OWNER = "dptrek";
-const REPO = "dptrek";
-const BRANCH = "main";
-const FOLDER = "data";
-
-async function uploadJSONToGitHub() {
-    const jsonBlobData = generate_JSONBlob(); // 生成 Blob 和文件名
+function uploadJSONToGitHub() {
+    // 调用 generate_JSONBlob() 生成 JSON Blob 和文件名
+    const jsonBlobData = generate_JSONBlob();
     const blob = jsonBlobData.blob;
     const fileName = jsonBlobData.fileName;
 
-    const reader = new FileReader();
-    reader.onload = async function() {
-        const base64Content = reader.result.split(",")[1]; // 转 base64
+    const OWNER = "dptrek";
+    const REPO = "dptrek";
+    const BRANCH = "main";
+    const FOLDER = "data";
+    const path = `${FOLDER}/${fileName}`;
 
-        try {
-            // ⚠️ 触发 GitHub Actions workflow 所需的最小权限 token
-            const res = await fetch(
-                `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`,
-                {
-                    method: "POST",
-                    headers: {
-                        "Accept": "application/vnd.github.v3+json",
-                        "Authorization": "token YOUR_PERSONAL_TOKEN", // 最小权限 token
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        event_type: "upload-json", // workflow 中监听的类型
-                        client_payload: {
-                            fileName,
-                            content: base64Content,
-                            folder: FOLDER,
-                            branch: BRANCH
-                        }
-                    })
-                }
-            );
-
-            if (res.ok) {
-                console.log("Workflow triggered successfully:", fileName);
-                alert("JSON triggered upload workflow successfully!");
-            } else {
-                const text = await res.text();
-                console.error("Error triggering workflow:", text);
-                alert("Upload failed!");
-            }
-        } catch (err) {
-            console.error("Error uploading JSON:", err);
-            alert("Upload failed. Saving locally.");
-            Download_JSONFile(); // 本地保存
+    // 将 Blob 转成 Base64 字符串
+    const content = await (async () => {
+        if (blob instanceof Blob) {
+            const text = await blob.text();
+            return btoa(unescape(encodeURIComponent(text)));
+        } else if (Buffer.isBuffer(blob)) {
+            return blob.toString('base64');
+        } else {
+            return btoa(unescape(encodeURIComponent(JSON.stringify(blob))));
         }
-    };
+    })();
 
-    reader.readAsDataURL(blob);
+    const token = process.env.GITHUBTOKEN || window.GITHUBTOKEN;
+
+    try {
+        // 获取文件 SHA（如果已存在需要 SHA 才能更新）
+        let sha = null;
+        const getRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`, {
+            headers: {
+                Authorization: `token ${token}`,
+                Accept: 'application/vnd.github+json'
+            }
+        });
+        if (getRes.status === 200) {
+            const data = await getRes.json();
+            sha = data.sha;
+        }
+
+        // 上传或更新文件
+        const uploadRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
+            method: 'PUT',
+            headers: {
+                Authorization: `token ${token}`,
+                Accept: 'application/vnd.github+json'
+            },
+            body: JSON.stringify({
+                message: `Upload JSON file ${fileName}`,
+                content: content,
+                branch: BRANCH,
+                sha: sha
+            })
+        });
+
+        if (!uploadRes.ok) {
+            const errData = await uploadRes.json();
+            throw new Error(JSON.stringify(errData));
+        }
+
+        const result = await uploadRes.json();
+        console.log("Upload success: ", result.content.html_url);
+        alert("JSON file uploaded successfully to GitHub!");
+    } catch (err) {
+        console.error("Error uploading to GitHub: ", err);
+        alert("Error uploading JSON file to GitHub! Downloading locally...");
+        Download_JSONFile(); // 失败就下载到本地
+    }
 }
-
-
-
-
-
-
