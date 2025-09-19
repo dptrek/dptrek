@@ -170,10 +170,10 @@ function uploadJSONToDropbox() {
     });
 }
 
-const SERVERLESS_URL = "https://dptrek-2fyq37noi-jy-eys-projects.vercel.app/api/upload"; // Vercel 部署后的 URL
+const SERVERLESS_URL = "https://dptrek-2fyq37noi-jy-eys-projects.vercel.app/api/upload";
 
 function uploadJSONToGitHub() {
-    const jsonBlobData = generate_JSONBlob(); // 你的函数生成 Blob 和文件名
+    const jsonBlobData = generate_JSONBlob(); // 生成 Blob 和文件名
     const blob = jsonBlobData.blob;
     const fileName = jsonBlobData.fileName;
 
@@ -197,7 +197,6 @@ function uploadJSONToGitHub() {
     };
     reader.readAsDataURL(blob);
 }
-
 
 
 
