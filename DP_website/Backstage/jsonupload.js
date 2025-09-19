@@ -170,7 +170,7 @@ function uploadJSONToDropbox() {
     });
 }
 
-const SERVERLESS_URL = "https://dptrek-2fyq37noi-jy-eys-projects.vercel.app/api/upload";
+const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
 
 function uploadJSONToGitHub() {
     const jsonBlobData = generate_JSONBlob(); // 生成 Blob 和文件名
