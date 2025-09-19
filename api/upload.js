@@ -13,16 +13,23 @@ export default async function handler(req, res) {
         return;
     }
 
-    // 只允许 POST
+    // 只允许 POST 请求
     if (req.method !== 'POST') {
         res.status(405).json({ error: 'Method not allowed' });
         return;
     }
 
     try {
-        const { fileName, content } = req.body;
+        // ===== 解析 JSON body =====
+        const buffers = [];
+        for await (const chunk of req) {
+            buffers.push(chunk);
+        }
+        const rawBody = Buffer.concat(buffers).toString();
+        const { fileName, content } = JSON.parse(rawBody);
 
-        const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // 从 Vercel 环境变量读取
+        // ===== GitHub 配置 =====
+        const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Vercel 环境变量
         const OWNER = "dptrek";
         const REPO = "dptrek";
         const BRANCH = "main";
@@ -31,7 +38,7 @@ export default async function handler(req, res) {
         const path = `${FOLDER}/${fileName}`;
         const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
 
-        // 检查文件是否存在
+        // 检查文件是否已存在
         let sha = null;
         const checkRes = await fetch(url, {
             headers: { "Authorization": `token ${GITHUB_TOKEN}` }
@@ -41,7 +48,7 @@ export default async function handler(req, res) {
             sha = json.sha;
         }
 
-        // 上传文件
+        // 上传文件到 GitHub
         const uploadRes = await fetch(url, {
             method: "PUT",
             headers: {
