@@ -172,7 +172,7 @@ function uploadJSONToDropbox() {
 
 //const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
 
-function uploadJSONToGitHub() {
+async function uploadJSONToGitHub() {
     // 调用 generate_JSONBlob() 生成 JSON Blob 和文件名
     const jsonBlobData = generate_JSONBlob();
     const blob = jsonBlobData.blob;
