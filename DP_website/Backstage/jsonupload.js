@@ -170,16 +170,16 @@ function uploadJSONToDropbox() {
     });
 }
 
-const SERVERLESS_URL = "https://dptrek-l6bpmv0bp-jy-eys-projects.vercel.app/api/upload";
+const SERVERLESS_URL = "https://dptrek-lxcr38qm9-jy-eys-projects.vercel.app/api/upload"; // Vercel 部署后的 URL
 
-function uploadJSONToGitHub() {
-    const jsonBlobData = generate_JSONBlob(); 
+export function uploadJSONToGitHub() {
+    const jsonBlobData = generate_JSONBlob(); // 你的函数生成 Blob 和文件名
     const blob = jsonBlobData.blob;
     const fileName = jsonBlobData.fileName;
 
     const reader = new FileReader();
     reader.onload = async function() {
-        const base64Content = reader.result.split(",")[1]; //base64
+        const base64Content = reader.result.split(",")[1]; // 转 base64
         try {
             const res = await fetch(SERVERLESS_URL, {
                 method: "POST",
@@ -192,12 +192,11 @@ function uploadJSONToGitHub() {
         } catch (err) {
             console.error("Error uploading:", err);
             alert("Upload failed. Saving locally.");
-            Download_JSONFile(); 
+            Download_JSONFile(); // 本地保存函数
         }
     };
     reader.readAsDataURL(blob);
 }
-
 
 
 
