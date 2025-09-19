@@ -1,35 +1,71 @@
-name: Upload JSON
+name: Upload JSON to GitHub
 
-# 触发方式：repository_dispatch
 on:
-  repository_dispatch:
-    types: [upload-json]
+  workflow_dispatch: # 手动触发，也可以改成 push、schedule 等
 
 jobs:
-  upload:
+  upload-json:
     runs-on: ubuntu-latest
 
+    env:
+      OWNER: dptrek
+      REPO: dptrek
+      BRANCH: main
+      FOLDER: data
+
     steps:
-      # 1. 检出仓库
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. 生成 data 文件夹，如果不存在
-      - name: Ensure data folder
-        run: mkdir -p data
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-      # 3. 写入 JSON 文件
-      - name: Decode JSON and save
-        run: |
-          echo "${{ github.event.client_payload.content }}" | base64 --decode > "data/${{ github.event.client_payload.fileName }}"
-
-      # 4. 提交并 push
-      - name: Commit and push
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add "data/${{ github.event.client_payload.fileName }}"
-          git commit -m "Upload ${{ github.event.client_payload.fileName }}"
-          git push
+      - name: Upload JSON to GitHub
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # 内置 token 安全使用
+          GITHUB_TOKEN: ${{ vars.GITHUBTOKEN }} # 这里读取 Repository variable
+        run: |
+          node -e "
+          const fs = require('fs');
+          const path = require('path');
+          const fetch = require('node-fetch');
+
+          function generate_JSONBlob() {
+            const data = { timestamp: Date.now() };
+            const fileName = 'example.json';
+            return { blob: Buffer.from(JSON.stringify(data, null, 2)), fileName };
+          }
+
+          (async () => {
+            const jsonData = generate_JSONBlob();
+            const content = jsonData.blob.toString('base64');
+            const filePath = '${FOLDER}/' + jsonData.fileName;
+
+            // 检查文件是否存在
+            let sha = null;
+            try {
+              const res = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}?ref=${BRANCH}`, {
+                headers: { Authorization: 'token ' + process.env.GITHUB_TOKEN }
+              });
+              if (res.ok) {
+                const file = await res.json();
+                sha = file.sha;
+              }
+            } catch (e) {}
+
+            // 上传或更新
+            const uploadRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}`, {
+              method: 'PUT',
+              headers: { 'Authorization': 'token ' + process.env.GITHUB_TOKEN, 'Accept': 'application/vnd.github+json' },
+              body: JSON.stringify({
+                message: 'Upload JSON file ' + jsonData.fileName,
+                content: content,
+                branch: '${BRANCH}',
+                sha: sha
+              })
+            });
+            const result = await uploadRes.json();
+            console.log('Upload result:', result.content.html_url);
+          })();
+          "
