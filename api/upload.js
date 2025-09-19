@@ -26,10 +26,22 @@ export default async function handler(req, res) {
             buffers.push(chunk);
         }
         const rawBody = Buffer.concat(buffers).toString();
-        const { fileName, content } = JSON.parse(rawBody);
 
-        // ===== GitHub 配置 =====
-        const GITHUB_TOKEN = process.env.GITHUB_TOKEN; // Vercel 环境变量
+        let fileName, content;
+        try {
+            ({ fileName, content } = JSON.parse(rawBody));
+        } catch (err) {
+            res.status(400).json({ error: "Invalid JSON body" });
+            return;
+        }
+
+        // ===== GitHub 上传配置 =====
+        const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+        if (!GITHUB_TOKEN) {
+            res.status(500).json({ error: "GitHub token not configured" });
+            return;
+        }
+
         const OWNER = "dptrek";
         const REPO = "dptrek";
         const BRANCH = "main";
@@ -38,7 +50,7 @@ export default async function handler(req, res) {
         const path = `${FOLDER}/${fileName}`;
         const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
 
-        // 检查文件是否已存在
+        // 检查文件是否存在
         let sha = null;
         const checkRes = await fetch(url, {
             headers: { "Authorization": `token ${GITHUB_TOKEN}` }
@@ -48,7 +60,7 @@ export default async function handler(req, res) {
             sha = json.sha;
         }
 
-        // 上传文件到 GitHub
+        // 上传文件
         const uploadRes = await fetch(url, {
             method: "PUT",
             headers: {
@@ -65,10 +77,12 @@ export default async function handler(req, res) {
         });
 
         const data = await uploadRes.json();
+
+        // 返回结果给前端
         res.status(200).json(data);
 
     } catch (err) {
-        console.error("Error in Serverless upload:", err);
+        console.error("Serverless function error:", err);
         res.status(500).json({ error: err.message });
     }
 }
