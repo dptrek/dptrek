@@ -179,7 +179,7 @@ function uploadJSONToGitHub() {
     reader.onload = async function() {
         const base64Content = reader.result.split(",")[1]; //base64
         try {
-            const res = await fetch("https://你的Vercel域名/api/upload", {
+            const res = await fetch("https://dptrek-l6bpmv0bp-jy-eys-projects.vercel.app", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ fileName, content: base64Content })
