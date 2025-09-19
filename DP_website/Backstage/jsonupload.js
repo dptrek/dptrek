@@ -135,13 +135,15 @@ function uploadJSONToDropbox() {
 
     var dbx = new Dropbox.Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN });
 
+    // 直接上传 Blob
     dbx.filesUpload({
-        path: '/' + fileName,
+        path: '/' + fileName,      // Dropbox 路径，根目录或 App Folder
         contents: blob,
-        mode: 'overwrite'
+        mode: 'overwrite'          // 如果文件已存在则覆盖
     }).then(function(response) {
         console.log("Upload success:", response);
 
+        // 创建共享链接
         return dbx.sharingCreateSharedLinkWithSettings({
             path: response.path_lower
         });
@@ -151,7 +153,7 @@ function uploadJSONToDropbox() {
     }).catch(function(error) {
         console.error("Error uploading data: ", error);
         alert("Error uploading JSON file to Dropbox! Downloading locally instead.");
-        Download_JSONFile(); // failed and back to local
+        Download_JSONFile(); // 上传失败则下载到本地
     });
 }
 
