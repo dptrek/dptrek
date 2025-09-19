@@ -135,17 +135,13 @@ function uploadJSONToDropbox() {
 
     var dbx = new Dropbox.Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN });
 
-    // Blob change to ArrayBuffer then upload
-    blob.arrayBuffer().then(function(buffer) {
-        return dbx.filesUpload({
-            path: '/' + fileName, // upload App Folder or root
-            contents: buffer,
-            mode: 'overwrite'
-        });
+    dbx.filesUpload({
+        path: '/' + fileName,
+        contents: blob,
+        mode: 'overwrite'
     }).then(function(response) {
         console.log("Upload success:", response);
 
-        // generate sahring link
         return dbx.sharingCreateSharedLinkWithSettings({
             path: response.path_lower
         });
@@ -157,4 +153,6 @@ function uploadJSONToDropbox() {
         alert("Error uploading JSON file to Dropbox! Downloading locally instead.");
         Download_JSONFile(); // failed and back to local
     });
+}
+
 }
