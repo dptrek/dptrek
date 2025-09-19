@@ -1,0 +1,35 @@
+name: Upload JSON
+
+# 触发方式：repository_dispatch
+on:
+  repository_dispatch:
+    types: [upload-json]
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. 检出仓库
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      # 2. 生成 data 文件夹，如果不存在
+      - name: Ensure data folder
+        run: mkdir -p data
+
+      # 3. 写入 JSON 文件
+      - name: Decode JSON and save
+        run: |
+          echo "${{ github.event.client_payload.content }}" | base64 --decode > "data/${{ github.event.client_payload.fileName }}"
+
+      # 4. 提交并 push
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add "data/${{ github.event.client_payload.fileName }}"
+          git commit -m "Upload ${{ github.event.client_payload.fileName }}"
+          git push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}   # 内置 token 安全使用
