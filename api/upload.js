@@ -3,7 +3,7 @@ import fetch from "node-fetch";
 
 export default async function handler(req, res) {
     // ===== CORS 设置 =====
-    res.setHeader('Access-Control-Allow-Origin', 'https://dptrek.github.io'); // 你的 GitHub Pages 域名
+    res.setHeader('Access-Control-Allow-Origin', 'https://dptrek.github.io'); // 前端域名
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
         return;
     }
 
-    // 只允许 POST 请求
+    // 只允许 POST
     if (req.method !== 'POST') {
         res.status(405).json({ error: 'Method not allowed' });
         return;
