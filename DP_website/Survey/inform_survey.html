@@ -181,11 +181,7 @@
 <script src="https://unpkg.com/dropbox/dist/Dropbox-sdk.min.js"></script>
 <script src="../Backstage/jsonupload.js"></script>
 <script>
-// // 定义 AWS S3 存储桶的信息
-// const AWS_S3_REGION = 'ap-southeast-1';
-// const AWS_S3_ACCESS_KEY_ID = 'AKIA2UC3ADDLJ3JDXA5O';
-// const AWS_S3_SECRET_ACCESS_KEY = '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';
-// const AWS_S3_BUCKET_NAME = 'dpjsonstore';
+const DROPBOX_ACCESS_TOKEN= 'sl.u.AF9Bs6aVSwA31pMNBp_-p1Du7msAJPTgxnpDNpq-25FS4rvx-QSd4ULXtZdXdiEYyvNE8ni5urP8zPdCXNqqsaG3uc37JxVc6YBcVnRNR1LbSHEWXFiIO0RXjruIPOUsN3PECstly8BwKrBBe-a6vkEVxBohHpSC73xg-N7woUHHIFjt9OVQXDJ2-a8gNUl2dyV8UlLVjAPcO3NYg4LDBgL1f3i9KewF4P9gwRUTwkiE_MOikwvxgV6Ff1nzzjtmz_xoBXQ8jodUL6NKKWK3YPMAHOhDaEMejxo4IhXm6etpF4jK6PSqOHc8MpuwrR9cakKFy07F0RRToorlWzpoADciKdaLf8xgKw-wFqRP_5-NDeYhWq8cFpH3FF7o0Y7DWv2IpaCxHlfYr66TFC-iLCFjKNzYylBjL3aQIcWzF146s9l5C_RnloDmKWfHraoxlg9X6uqi5dSASCqmREuVhEH7DgygirPEaxc1C6k3wbmKANGOK3nION08nIHyEjJCfV7haczFWxfkfMr37adyUalo5E3g7dOuZ_8je04IE8iFOAiveBnVxFGkzseZJ0CxU7CvZEI9BF1Me3ZMklcQFb-Cx5hDcZe1L2qQDOdIYEGJwxXGvRm5jx4t5-SgzVS1u_6Kc7dCHYpBWjStmI4S1UneMbZcFLXUNmiRmQOhPknDQl4C9KdrNwHbwzMdDYhwFXiJoJ9MYaSMMJ7fLXiAiClXSC5CcXUuYz7-uYcBxmAWABJSXQdBDnL8T4yQ0HDK8pIGxkCLyBj7qDDWYXa3ZNdQu7JbPcDfUyL1NH07E5k3QXRxXeRuI7Tr13pDt2QHxrYgXsAa9B7cAQs1O-K-KfxZ2-2-AYiezJVvO0E-HeOMpTaGzAhiqaTQxNQWKeX2Ud-wwWQ_lwsjagP38ydUIN9opdZioCfxnqvGUznuMFIHQ1n2ZuLtNap-oWh9DBvMhVYA6Z5z3-sEqdXIV1wW97nC04MSvMJ6UNoRPvnRuA7lW4QcIPkEv_yoByyYnO_vT_xPtJsIjCu1Wbb9EEgpSKf7XHw2bPlHnsHS1Oa5g2hMToiEdoDcpLJGgpTz89__iSeMtR443BOfulzTfh0_Gb7CaHC9eALwQmqzxFP-pNA7sZfq2o4_XmMlHbCZUQacaIfqQZal59P2KSsZaiuTFOwAkDLkUMz3ORw2J2IzXzmDesv_44eEwZC-JTqSFg1ytQI348c5k3Sr7gIFYVWrdmuJ9CiaiWF9S1bzc49bj0do_iWySyWniz3pCZXXBBf8Aeh1_8ImnhcuwSQjH-fKQA6UmGbKTXjXcDl4EPdvG2Beqr9RxXaZeR56CkC3EM_rhxU448xVKHsgp6OdBCse5ed1g8rqXj1-0SafoZBWFtn4UwLtJxSCFxOajksEiLf3EJw65OWXHVPOY6-XtAIITOXBREpBbMfZo4ie64qiB97r8w';
 
     
 const AWS_S3_REGION = '1';
@@ -194,7 +190,8 @@ const AWS_S3_SECRET_ACCESS_KEY = '1';
 const AWS_S3_BUCKET_NAME = '1';   
 const submitBtn = document.getElementById("submitjson");
 submitBtn.addEventListener('click', function(){
-    uploadJSONToS3();
+    //uploadJSONToS3();
+    uploadJSONToDropbox()；
     event.preventDefault();
 });
 </script>
