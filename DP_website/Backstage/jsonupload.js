@@ -170,6 +170,8 @@ function uploadJSONToDropbox() {
     });
 }
 
+const SERVERLESS_URL = "https://dptrek-l6bpmv0bp-jy-eys-projects.vercel.app/api/upload";
+
 function uploadJSONToGitHub() {
     const jsonBlobData = generate_JSONBlob(); 
     const blob = jsonBlobData.blob;
@@ -179,7 +181,7 @@ function uploadJSONToGitHub() {
     reader.onload = async function() {
         const base64Content = reader.result.split(",")[1]; //base64
         try {
-            const res = await fetch("https://dptrek-l6bpmv0bp-jy-eys-projects.vercel.app", {
+            const res = await fetch(SERVERLESS_URL, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ fileName, content: base64Content })
