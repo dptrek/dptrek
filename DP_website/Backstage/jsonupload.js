@@ -124,3 +124,37 @@ function uploadJSONToS3() {
         }
     });
 }
+
+
+
+// upload Dropbox
+function uploadJSONToDropbox() {
+    var jsonBlobData = generate_JSONBlob();
+    var blob = jsonBlobData.blob;
+    var fileName = jsonBlobData.fileName;
+
+    var dbx = new Dropbox.Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN });
+
+    // Blob change to ArrayBuffer then upload
+    blob.arrayBuffer().then(function(buffer) {
+        return dbx.filesUpload({
+            path: '/' + fileName, // upload App Folder or root
+            contents: buffer,
+            mode: 'overwrite'
+        });
+    }).then(function(response) {
+        console.log("Upload success:", response);
+
+        // generate sahring link
+        return dbx.sharingCreateSharedLinkWithSettings({
+            path: response.path_lower
+        });
+    }).then(function(linkResponse) {
+        console.log("Shareable link:", linkResponse.url);
+        alert("JSON file uploaded successfully to Dropbox!\nLink: " + linkResponse.url);
+    }).catch(function(error) {
+        console.error("Error uploading data: ", error);
+        alert("Error uploading JSON file to Dropbox! Downloading locally instead.");
+        Download_JSONFile(); // failed and back to local
+    });
+}
