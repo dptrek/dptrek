@@ -129,17 +129,22 @@ function uploadJSONToS3() {
 
 // upload Dropbox
 function uploadJSONToDropbox() {
+    // 生成 JSON Blob 和文件名
     var jsonBlobData = generate_JSONBlob();
     var blob = jsonBlobData.blob;
     var fileName = jsonBlobData.fileName;
 
+    // 调试信息
+    console.log("Uploading file:", fileName);
+    console.log("Blob size:", blob.size, "type:", blob.type);
+
     var dbx = new Dropbox.Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN });
 
-    // 直接上传 Blob
+    // 上传 Blob
     dbx.filesUpload({
-        path: '/' + fileName,      // Dropbox 路径，根目录或 App Folder
-        contents: blob,
-        mode: 'overwrite'          // 如果文件已存在则覆盖
+        path: '/' + fileName,   // Dropbox 路径
+        contents: blob,         // 直接上传 Blob
+        mode: 'overwrite'       // 覆盖同名文件
     }).then(function(response) {
         console.log("Upload success:", response);
 
@@ -151,9 +156,18 @@ function uploadJSONToDropbox() {
         console.log("Shareable link:", linkResponse.url);
         alert("JSON file uploaded successfully to Dropbox!\nLink: " + linkResponse.url);
     }).catch(function(error) {
+        // 上传失败，打印完整错误信息
         console.error("Error uploading data: ", error);
         alert("Error uploading JSON file to Dropbox! Downloading locally instead.");
-        Download_JSONFile(); // 上传失败则下载到本地
+
+        // 备用方案：下载到本地
+        Download_JSONFile();
+
+        // 进一步调试：检查 token 或内容
+        if (error && error.error && error.error.error_summary) {
+            console.error("Dropbox error summary:", error.error.error_summary);
+        }
     });
 }
+
 
