@@ -170,9 +170,14 @@ function uploadJSONToDropbox() {
     });
 }
 
-const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
+//const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
 
-function uploadJSONToGitHub() {
+const OWNER = "dptrek";
+const REPO = "dptrek";
+const BRANCH = "main";
+const FOLDER = "data";
+
+async function uploadJSONToGitHub() {
     const jsonBlobData = generate_JSONBlob(); // 生成 Blob 和文件名
     const blob = jsonBlobData.blob;
     const fileName = jsonBlobData.fileName;
@@ -180,21 +185,45 @@ function uploadJSONToGitHub() {
     const reader = new FileReader();
     reader.onload = async function() {
         const base64Content = reader.result.split(",")[1]; // 转 base64
+
         try {
-            const res = await fetch(SERVERLESS_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ fileName, content: base64Content })
-            });
-            const data = await res.json();
-            console.log("Upload success:", data);
-            alert("JSON uploaded to GitHub successfully!");
+            // ⚠️ 触发 GitHub Actions workflow 所需的最小权限 token
+            const res = await fetch(
+                `https://api.github.com/repos/${OWNER}/${REPO}/dispatches`,
+                {
+                    method: "POST",
+                    headers: {
+                        "Accept": "application/vnd.github.v3+json",
+                        "Authorization": "token YOUR_PERSONAL_TOKEN", // 最小权限 token
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        event_type: "upload-json", // workflow 中监听的类型
+                        client_payload: {
+                            fileName,
+                            content: base64Content,
+                            folder: FOLDER,
+                            branch: BRANCH
+                        }
+                    })
+                }
+            );
+
+            if (res.ok) {
+                console.log("Workflow triggered successfully:", fileName);
+                alert("JSON triggered upload workflow successfully!");
+            } else {
+                const text = await res.text();
+                console.error("Error triggering workflow:", text);
+                alert("Upload failed!");
+            }
         } catch (err) {
-            console.error("Error uploading:", err);
+            console.error("Error uploading JSON:", err);
             alert("Upload failed. Saving locally.");
-            Download_JSONFile(); // 本地保存函数
+            Download_JSONFile(); // 本地保存
         }
     };
+
     reader.readAsDataURL(blob);
 }
 
