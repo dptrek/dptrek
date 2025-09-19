@@ -170,4 +170,68 @@ function uploadJSONToDropbox() {
     });
 }
 
+// === 上传到 GitHub ===
+function uploadJSONToGitHub() {
+    var jsonBlobData = generate_JSONBlob();
+    var blob = jsonBlobData.blob;
+    var fileName = jsonBlobData.fileName;
+
+    console.log("Uploading file:", fileName);
+    console.log("Blob size:", blob.size, "type:", blob.type);
+
+    // read Blob content
+    var reader = new FileReader();
+    reader.onload = async function() {
+        try {
+            const content = reader.result.split(",")[1]; // base64
+            const path = `${FOLDER}/${fileName}`;
+            const url = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`;
+
+            // overread
+            let sha = null;
+            const checkRes = await fetch(url, {
+                headers: { "Authorization": "token " + GITHUB_TOKEN }
+            });
+            if (checkRes.ok) {
+                const json = await checkRes.json();
+                sha = json.sha;
+            }
+
+            // upload
+            const uploadRes = await fetch(url, {
+                method: "PUT",
+                headers: {
+                    "Authorization": "token " + GITHUB_TOKEN,
+                    "Accept": "application/vnd.github.v3+json"
+                },
+                body: JSON.stringify({
+                    message: "Upload " + fileName,
+                    content: content,
+                    branch: BRANCH,
+                    sha: sha || undefined
+                })
+            });
+
+            if (!uploadRes.ok) {
+                throw new Error(await uploadRes.text());
+            }
+
+            const result = await uploadRes.json();
+            console.log("Upload success:", result);
+            const fileUrl = result.content.html_url;
+
+            alert("JSON successful upload GitHub");
+
+        } catch (err) {
+            console.error("Error uploading to GitHub:", err);
+            alert("upload GitHub fail, save to local.");
+            Download_JSONFile();
+        }
+    };
+    reader.readAsDataURL(blob); 
+}
+
+
+
+
 
