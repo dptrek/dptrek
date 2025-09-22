@@ -170,7 +170,7 @@ function uploadJSONToDropbox() {
     });
 }
 
-//const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
+const SERVERLESS_URL = "https://dptrek.vercel.app/api/upload";
 
 async function uploadJSONToGitHub() {
     // 调用 generate_JSONBlob() 生成 JSON Blob 和文件名
