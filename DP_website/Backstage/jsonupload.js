@@ -127,117 +127,49 @@ function uploadJSONToS3() {
 
 
 
-// upload Dropbox
-function uploadJSONToDropbox() {
-    // 生成 JSON Blob 和文件名
-    var jsonBlobData = generate_JSONBlob();
-    var blob = jsonBlobData.blob;
-    var fileName = jsonBlobData.fileName;
-
-    // 调试信息
-    console.log("Uploading file:", fileName);
-    console.log("Blob size:", blob.size, "type:", blob.type);
-
-    var dbx = new Dropbox.Dropbox({ accessToken: DROPBOX_ACCESS_TOKEN });
-
-    // 上传 Blob
-    dbx.filesUpload({
-        path: '/' + fileName,   // Dropbox 路径
-        contents: blob,         // 直接上传 Blob
-        mode: 'overwrite'       // 覆盖同名文件
-    }).then(function(response) {
-        console.log("Upload success:", response);
-
-        // 创建共享链接
-        return dbx.sharingCreateSharedLinkWithSettings({
-            path: response.path_lower
-        });
-    }).then(function(linkResponse) {
-        console.log("Shareable link:", linkResponse.url);
-        alert("JSON file uploaded successfully to Dropbox!\nLink: " + linkResponse.url);
-    }).catch(function(error) {
-        // 上传失败，打印完整错误信息
-        console.error("Error uploading data: ", error);
-        alert("Error uploading JSON file to Dropbox! Downloading locally instead.");
-
-        // 备用方案：下载到本地
-        Download_JSONFile();
-
-        // 进一步调试：检查 token 或内容
-        if (error && error.error && error.error.error_summary) {
-            console.error("Dropbox error summary:", error.error.error_summary);
-        }
-    });
-}
-
-const SERVERLESS_URL = "https://dptrek-kcdh8hpvc-jy-eys-projects.vercel.app/api/upload";
-
 async function uploadJSONToGitHub() {
-    // 调用 generate_JSONBlob() 生成 JSON Blob 和文件名
+
+VEREL_API_URL = "https://dptrek.vercel.app/api/upload";
+  try {
+    // ==== 从本地生成 JSON Blob ====
     const jsonBlobData = generate_JSONBlob();
     const blob = jsonBlobData.blob;
     const fileName = jsonBlobData.fileName;
 
-    const OWNER = "dptrek";
-    const REPO = "dptrek";
-    const BRANCH = "main";
-    const FOLDER = "data";
-    const path = `${FOLDER}/${fileName}`;
+    console.log("Uploading generated file:", fileName);
+    console.log("Blob size:", blob.size, "type:", blob.type);
 
-    // 将 Blob 转成 Base64 字符串
-    const content = await (async () => {
-        if (blob instanceof Blob) {
-            const text = await blob.text();
-            return btoa(unescape(encodeURIComponent(text)));
-        } else if (Buffer.isBuffer(blob)) {
-            return blob.toString('base64');
-        } else {
-            return btoa(unescape(encodeURIComponent(JSON.stringify(blob))));
-        }
-    })();
+    // ==== 读取 Blob 转成 base64 ====
+    const content = await blob.text();
+    const base64Content = btoa(unescape(encodeURIComponent(content)));
 
-    const token = process.env.GITHUBTOKEN || window.GITHUBTOKEN;
+    // ==== 调用 Vercel API 上传到 GitHub ====
+    const res = await fetch(VEREL_API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        fileName: fileName,
+        content: base64Content
+      })
+    });
 
-    try {
-        // 获取文件 SHA（如果已存在需要 SHA 才能更新）
-        let sha = null;
-        const getRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}?ref=${BRANCH}`, {
-            headers: {
-                Authorization: `token ${token}`,
-                Accept: 'application/vnd.github+json'
-            }
-        });
-        if (getRes.status === 200) {
-            const data = await getRes.json();
-            sha = data.sha;
-        }
-
-        // 上传或更新文件
-        const uploadRes = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${path}`, {
-            method: 'PUT',
-            headers: {
-                Authorization: `token ${token}`,
-                Accept: 'application/vnd.github+json'
-            },
-            body: JSON.stringify({
-                message: `Upload JSON file ${fileName}`,
-                content: content,
-                branch: BRANCH,
-                sha: sha
-            })
-        });
-
-        if (!uploadRes.ok) {
-            const errData = await uploadRes.json();
-            throw new Error(JSON.stringify(errData));
-        }
-
-        const result = await uploadRes.json();
-        console.log("Upload success: ", result.content.html_url);
-        alert("JSON file uploaded successfully to GitHub!");
-    } catch (err) {
-        console.error("Error uploading to GitHub: ", err);
-        alert("Error uploading JSON file to GitHub! Downloading locally...");
-        Download_JSONFile(); // 失败就下载到本地
+    if (!res.ok) {
+      const text = await res.text();
+      throw new Error(text);
     }
+
+    const result = await res.json();
+    console.log("Upload success:", result);
+
+    alert("JSON file uploaded successfully to GitHub!\nFile: " + fileName);
+
+  } catch (err) {
+    console.error("Error uploading JSON to GitHub:", err);
+    alert("Error uploading JSON file to GitHub!");
+
+    if (err && err.message) {
+      console.error("Detailed error:", err.message);
+    }
+  }
 }
+
