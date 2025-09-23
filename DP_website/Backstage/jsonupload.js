@@ -129,7 +129,7 @@ function uploadJSONToS3() {
 
 async function uploadJSONToGitHub() {
 
-VEREL_API_URL = "https://dptrek.vercel.app/api/upload";
+//VEREL_API_URL = "https://dptrek.vercel.app/api/upload";
   try {
     // ==== 从本地生成 JSON Blob ====
     const jsonBlobData = generate_JSONBlob();
