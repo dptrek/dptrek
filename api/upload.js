@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 
     const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
     const OWNER = "dptrek";  // GitHub 用户名
-    const REPO = "dptrek";   // 仓库名
+    const REPO = "dptrek_old";   // 仓库名
     const BRANCH = "main";   // 分支
     const FOLDER = "data";   // 上传目录
 
